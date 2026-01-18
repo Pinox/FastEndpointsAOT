@@ -182,3 +182,5 @@ Debug mode uses standard JIT compilation for faster iteration:
 ## 📄 License
 
 See [LICENSE.md](LICENSE.md) for details.
+
+![Scalar Ping-Pong](Scalar%20Ping-Pong.png)
