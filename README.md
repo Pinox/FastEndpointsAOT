@@ -22,7 +22,7 @@ This project demonstrates how to run FastEndpoints with Native AOT compilation, 
 
 ```powershell
 # Navigate to the project root
-cd latest
+cd FastEndpointsAOT-main
 
 # Run in development mode (JIT)
 cd Web
