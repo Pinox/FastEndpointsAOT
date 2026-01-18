@@ -1,0 +1,51 @@
+<Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
+    <Application>
+        <!-- Preserve all types in the main assembly for Native AOT -->
+        <Assembly Name="Web" Dynamic="Required All" />
+        
+        <!-- FastEndpoints - preserve entire assembly, don't specify individual types -->
+        <Assembly Name="FastEndpoints" Dynamic="Required All" />
+        <Assembly Name="FastEndpoints.Core" Dynamic="Required All" />
+        <Assembly Name="FastEndpoints.Security" Dynamic="Required All" />
+        <Assembly Name="FastEndpoints.Messaging" Dynamic="Required All" />
+        <Assembly Name="FastEndpoints.Messaging.Core" Dynamic="Required All" />
+        <Assembly Name="FastEndpoints.Messaging.Remote" Dynamic="Required All" />
+        <Assembly Name="FastEndpoints.Attributes" Dynamic="Required All" />
+        
+        <!-- FluentValidation - used by FastEndpoints validators -->
+        <Assembly Name="FluentValidation" Dynamic="Required All" />
+        
+        <!-- ASP.NET Core response writing internals -->
+        <Assembly Name="Microsoft.AspNetCore.Http" Dynamic="Required All" />
+        <Assembly Name="Microsoft.AspNetCore.Http.Abstractions" Dynamic="Required All" />
+        <Assembly Name="Microsoft.AspNetCore.Http.Features" Dynamic="Required All" />
+        <Assembly Name="Microsoft.AspNetCore.Routing" Dynamic="Required All" />
+        <Assembly Name="Microsoft.AspNetCore.Authorization" Dynamic="Required All" />
+        <Assembly Name="Microsoft.AspNetCore.Authentication" Dynamic="Required All" />
+        <Assembly Name="Microsoft.AspNetCore.Authentication.JwtBearer" Dynamic="Required All" />
+        
+        <!-- System types needed for serialization -->
+        <Assembly Name="System.Private.CoreLib">
+            <Type Name="System.Threading.Tasks.Task" Dynamic="Required All" />
+            <Type Name="System.Threading.Tasks.Task`1" Dynamic="Required All" />
+            <Type Name="System.Threading.Tasks.ValueTask" Dynamic="Required All" />
+            <Type Name="System.Threading.Tasks.ValueTask`1" Dynamic="Required All" />
+            <!-- VoidTaskResult - internal type that EndpointMiddleware tries to serialize -->
+            <Type Name="System.Threading.Tasks.VoidTaskResult" Dynamic="Required All" />
+            <Type Name="System.String" Dynamic="Required All" />
+            <Type Name="System.Object" Dynamic="Required All" />
+            <Type Name="System.Collections.Generic.IEnumerable`1" Dynamic="Required All" />
+            <Type Name="System.Collections.Generic.List`1" Dynamic="Required All" />
+        </Assembly>
+        
+        <!-- System.Text.Json - required for response serialization -->
+        <Assembly Name="System.Text.Json" Dynamic="Required All" />
+        
+        <!-- System.Linq.Expressions - required for dynamic code -->
+        <Assembly Name="System.Linq.Expressions" Dynamic="Required All" />
+        <Assembly Name="System.Linq.Queryable" Dynamic="Required All" />
+        
+        <!-- IO Pipelines for response body writing -->
+        <Assembly Name="System.IO.Pipelines" Dynamic="Required All" />
+    </Application>
+</Directives>

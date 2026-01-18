@@ -1,0 +1,11 @@
+###
+POST http://localhost:5000/user
+Content-Type: application/json
+
+{
+    "firstName": "first name",
+    "lastName": "last name"
+}
+
+###
+GET http://localhost:5000/test

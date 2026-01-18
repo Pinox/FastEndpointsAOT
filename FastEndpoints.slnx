@@ -1,0 +1,19 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="AI_DEVELOPER_GUIDE.md" />
+    <File Path="Directory.Packages.props" />
+    <File Path="nuget.config" />
+    <File Path="README.md" />
+    <File Path="Src/Directory.Build.props" />
+    <File Path="Src/Library/changelog.md" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/IntegrationTests/FastEndpoints.OpenApi/Int.OpenApi.csproj" />
+  </Folder>
+  <Project Path="Web/Web.csproj" />
+</Solution>

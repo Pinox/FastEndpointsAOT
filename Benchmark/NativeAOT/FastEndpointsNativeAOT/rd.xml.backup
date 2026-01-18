@@ -1,0 +1,29 @@
+<Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
+    <Application>
+        <!-- Preserve all types in the main assembly for Native AOT -->
+        <Assembly Name="FastEndpointsNativeAOT" Dynamic="Required All" />
+        
+        <!-- FastEndpoints - preserve entire assembly -->
+        <Assembly Name="FastEndpoints" Dynamic="Required All" />
+        <Assembly Name="FastEndpoints.Attributes" Dynamic="Required All" />
+        
+        <!-- FluentValidation - used by FastEndpoints validators -->
+        <Assembly Name="FluentValidation" Dynamic="Required All" />
+        
+        <!-- ASP.NET Core -->
+        <Assembly Name="Microsoft.AspNetCore.Http" Dynamic="Required All" />
+        <Assembly Name="Microsoft.AspNetCore.Http.Abstractions" Dynamic="Required All" />
+        <Assembly Name="Microsoft.AspNetCore.Routing" Dynamic="Required All" />
+        <Assembly Name="Microsoft.AspNetCore.Authorization" Dynamic="Required All" />
+        
+        <!-- System types needed for serialization -->
+        <Assembly Name="System.Private.CoreLib">
+            <Type Name="System.Threading.Tasks.Task" Dynamic="Required All" />
+            <Type Name="System.Threading.Tasks.Task`1" Dynamic="Required All" />
+            <Type Name="System.Threading.Tasks.VoidTaskResult" Dynamic="Required All" />
+        </Assembly>
+        
+        <!-- System.Text.Json -->
+        <Assembly Name="System.Text.Json" Dynamic="Required All" />
+    </Application>
+</Directives>

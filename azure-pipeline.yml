@@ -1,0 +1,40 @@
+trigger:
+  tags:
+    include:
+      - "v*"
+  branches:
+    exclude:
+      - "*"
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  buildConfiguration: "Release"
+
+steps:
+  - task: UseDotNet@2
+    displayName: "Use .Net Core SDK 9.x"
+    inputs:
+      packageType: "sdk"
+      version: "9.x"
+      includePreviewVersions: true
+
+  - task: Bash@3
+    displayName: "Update xUnit Runner Config"
+    inputs:
+      targetType: 'inline'
+      script: |
+        echo '{
+            "parallelizeAssembly": false,
+            "parallelizeTestCollections": false,
+            "diagnosticMessages": false
+        }' > Tests/IntegrationTests/FastEndpoints/xunit.runner.json
+
+  - task: DotNetCoreCLI@2
+    displayName: "Run Tests"
+    inputs:
+      command: "test"
+      projects: "Tests/**/*.csproj"
+      arguments: "--configuration $(BuildConfiguration) --filter ExcludeInCiCd!=Yes"
+      workingDirectory: "Tests"

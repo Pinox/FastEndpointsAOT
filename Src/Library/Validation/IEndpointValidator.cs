@@ -1,0 +1,3 @@
+﻿namespace FastEndpoints;
+
+interface IEndpointValidator;

@@ -1,0 +1,1 @@
+﻿global using Cfg = FastEndpoints.Config;

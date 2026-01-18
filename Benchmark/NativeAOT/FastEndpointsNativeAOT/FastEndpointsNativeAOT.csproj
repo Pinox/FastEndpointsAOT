@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <PublishAot>true</PublishAot>
+        <TrimMode>link</TrimMode>
+        <SelfContained>true</SelfContained>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <DebugType>None</DebugType>
+        <DebugSymbols>false</DebugSymbols>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <RdXmlFile Include="rd.xml" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Src\Generator\FastEndpoints.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+        <ProjectReference Include="..\..\..\Src\Library\FastEndpoints.csproj"/>
+        <PackageReference Include="FluentValidation"/>
+    </ItemGroup>
+
+</Project>

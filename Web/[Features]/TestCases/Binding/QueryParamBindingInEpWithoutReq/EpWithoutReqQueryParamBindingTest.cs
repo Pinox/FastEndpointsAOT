@@ -1,0 +1,43 @@
+﻿namespace TestCases.QueryParamBindingInEpWithoutReq;
+
+public class EpWithoutReqQueryParamBindingTest : EndpointWithoutRequest<Response>
+{
+    public override void Configure()
+    {
+        Get(AppRoutes.testcases_ep_without_req_query_param_binding_test);
+        AllowAnonymous();
+        Summary(
+            s =>
+                s.Params["otherID"] = "the description for other id");
+    }
+
+    public override async Task HandleAsync(CancellationToken ct)
+        => await Send.OkAsync(
+            new()
+            {
+                CustomerID = Query<int>("customerId"),
+                OtherID = Query<int>("otherId"),
+                Doubles = Query<double[]>("doubles")!,
+                Guids = Query<List<Guid>>("guids")!,
+                Ints = Query<IEnumerable<int>>("ints")!,
+                Floaty = Query<float>("floaty")
+            });
+}
+
+public class Response
+{
+    public int CustomerID { get; set; }
+
+    /// <summary>
+    /// optional other id
+    /// </summary>
+    public int? OtherID { get; set; }
+
+    public double[] Doubles { get; set; }
+
+    public IEnumerable<int> Ints { get; set; }
+
+    public List<Guid> Guids { get; set; }
+
+    public float Floaty { get; set; }
+}

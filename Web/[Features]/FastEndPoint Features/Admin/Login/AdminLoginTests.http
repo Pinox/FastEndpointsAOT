@@ -1,0 +1,36 @@
+### Admin Login - Version 0 (POST with JSON body)
+POST https://localhost:5001/api/admin/login
+Content-Type: application/json
+{
+    "UserName": "admin",
+    "Password": "pass"
+}
+
+###
+
+### Admin Login - Version 0 (POST with query params)
+POST https://localhost:5001/api/admin/login?UserName=admin&Password=pass
+Content-Type: application/json
+{}
+
+
+### Admin Login - Invalid Credentials (POST)
+POST https://localhost:5001/api/admin/login
+Content-Type: application/json
+
+{
+    "UserName": "invalid",
+    "Password": "invalid"
+}
+
+
+
+### Admin Login - Invalid Credentials (POST)
+POST https://localhost:5001/api/admin/login
+Content-Type: application/json
+
+{
+    "UserName": "admin",
+    "Password": "passs"
+}
+###
