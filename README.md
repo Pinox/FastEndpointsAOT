@@ -1,6 +1,6 @@
 # FastEndpoints Native AOT
 
-A fully functional Native AOT implementation of [FastEndpoints](https://fast-endpoints.com) for .NET 10. This repo includes the workaround to get fastendpoints working until the official fastendpoint repo becomes AOT compatible. 
+playground A fully functional Native AOT implementation of [FastEndpoints](https://fast-endpoints.com) for .NET 10. This repo exist as iteration playground until the official fastendpoint repo becomes fully AOT compatible. 
 
 This has been a "guided" vibe coded implementation so do take care in checking details.  My main aim was just to get it working therefor trimming on many libs have been disabled in the rd.xml file. Further iteration is needed to improve the code for production.
 
@@ -97,7 +97,7 @@ Interactive API documentation available at `localhost:5000/api` in development m
 
 ### Real-World Benchmarking
 
-Uses [Bombardier](https://github.com/codesenberg/bombardier) for live endpoint benchmarking (not in-memory), providing realistic performance metrics.
+<!-- Uses [Bombardier](https://github.com/codesenberg/bombardier) for live endpoint benchmarking (not in-memory), providing realistic performance metrics.
 
 ## ⚠️ Native AOT Workaround
 
@@ -105,9 +105,11 @@ FastEndpoints registers routes using `app.MapMethods(..., lambda => Task)`. In N
 
 ```
 JsonPropertyInfo`1[System.Threading.Tasks.VoidTaskResult] is missing native code or metadata
-```
+``` -->
 
-### Solution: `AotResponseBufferingMiddleware`
+Update - This issue has been resolved. Steps just noted.
+
+<!-- ### Solution: `AotResponseBufferingMiddleware`
 
 This middleware intercepts and suppresses the exception when the response has already been written successfully:
 
@@ -115,7 +117,7 @@ This middleware intercepts and suppresses the exception when the response has al
 app.UseAotResponseBuffering() // Must be early in the pipeline
    .UseExceptionHandling()
    .UseFastEndpointsPipeline();
-```
+``` -->
 
 **Why this is safe:**
 1. The custom `ResponseSerializer` writes the actual response data first
@@ -163,15 +165,7 @@ The project is configured for Native AOT in Release mode:
 </PropertyGroup>
 ```
 
-### Debug Build (JIT)
 
-Debug mode uses standard JIT compilation for faster iteration:
-
-```xml
-<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <PublishAot>false</PublishAot>
-</PropertyGroup>
-```
 
 ## 📚 Resources
 
