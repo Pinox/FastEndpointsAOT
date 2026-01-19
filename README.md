@@ -1,6 +1,7 @@
 # FastEndpoints Native AOT
 
-playground A fully functional Native AOT implementation of [FastEndpoints](https://fast-endpoints.com) for .NET 10. This repo exist as iteration playground until the official fastendpoint repo becomes fully AOT compatible. 
+ 
+ A fully functional Native AOT implementation of [FastEndpoints](https://fast-endpoints.com) for .NET 10. This repo exist as iteration playground until the official fastendpoint repo becomes fully AOT compatible. 
 
 This has been a "guided" vibe coded implementation so do take care in checking details.  My main aim was just to get it working therefor trimming on many libs have been disabled in the rd.xml file. Further iteration is needed to improve the code for production.
 
