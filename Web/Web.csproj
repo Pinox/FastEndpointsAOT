@@ -44,12 +44,15 @@
     </ItemGroup>
 
     <ItemGroup>
+        <!-- NuGet packages for runtime libraries -->
         <PackageReference Include="FastEndpoints" />
         <PackageReference Include="FastEndpoints.Messaging.Remote" />
         <PackageReference Include="FastEndpoints.Security" />
-
-        <!--Not included in final build therefor marked as private - this is a source generator-->
-        <PackageReference Include="FastEndpoints.Generator" PrivateAssets="all" />
+        
+        <!-- Source generator - use local project to test AOT fix -->
+        <ProjectReference Include="..\Src\Generator\FastEndpoints.Generator.csproj" 
+                          OutputItemType="Analyzer" 
+                          ReferenceOutputAssembly="false" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
         <PackageReference Include="Scalar.AspNetCore" />
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" />

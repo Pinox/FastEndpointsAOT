@@ -1,10 +1,14 @@
 using sq.Hostings;
-using Web.Hostings;
 using Web.Features.Docs;
+using Web.Hostings;
+using Web.Infrastructure;
 
 try
 {
     Console.WriteLine("[DEBUG] Starting application...");
+    
+    // Ensure AOT trimmer preserves endpoint method metadata
+    AotEndpointPreserver.EnsureEndpointsPreserved();
 
     var bld = WebApplication.CreateBuilder(args);
     Console.WriteLine("[DEBUG] WebApplication.CreateBuilder completed");
@@ -27,15 +31,15 @@ try
 
     Console.WriteLine("[DEBUG] Configuring pipeline...");
     app
-       .UseAotResponseBuffering() // Must be early to catch VoidTaskResult exceptions from FastEndpoints
+       // .UseAotResponseBuffering() // Must be early to catch VoidTaskResult exceptions from FastEndpoints
        .UseLocalizationConfigured()
        .UseExceptionHandling()
        .UseResponseCachingRoutingCors()
        .UseJwtRevocationPipeline();
-    
+
     // Auth middleware is required for protected endpoints
     app.UseAuthNAuthZPipeline();
-    
+
     app
        .UseAntiforgeryPipeline()
        .UseOutputCachePipeline()

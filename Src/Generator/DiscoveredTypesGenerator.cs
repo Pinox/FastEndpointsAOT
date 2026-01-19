@@ -72,9 +72,36 @@ public class DiscoveredTypesGenerator : IIncrementalGenerator
               namespace {{_assemblyName}};
 
               using System;
+              using System.Diagnostics.CodeAnalysis;
 
+              /// <summary>
+              /// Auto-generated list of discovered FastEndpoints types.
+              /// The DynamicDependency attributes ensure AOT/trimming preserves method and constructor metadata.
+              /// </summary>
               public static class DiscoveredTypes
               {
+              """);
+
+        // Emit DynamicDependency attributes for each type to preserve methods and constructors for AOT
+        // Use string-based overload to handle generic types
+        foreach (var t in discoveredTypes.Distinct().OrderBy(t => t))
+        {
+            // Skip open generic types (they have <T> parameters without concrete types)
+            if (t.Contains("<") && !t.EndsWith(">"))
+                continue;
+                
+            b.w(
+                $"""
+                     [DynamicDependency(DynamicallyAccessedMemberTypes.PublicMethods | DynamicallyAccessedMemberTypes.PublicConstructors, typeof({t}))]
+                 """);
+        }
+
+        b.w(
+            """
+                  /// <summary>
+                  /// All discovered endpoint, validator, event handler, and command handler types.
+                  /// Each type has its public methods and constructors preserved for AOT compatibility.
+                  /// </summary>
                   public static readonly List<Type> All =
                   [
               """);
