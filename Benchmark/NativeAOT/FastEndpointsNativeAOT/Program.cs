@@ -3,15 +3,19 @@ using FastEndpointsNativeAOT;
 
 var builder = WebApplication.CreateSlimBuilder(args);
 builder.Logging.ClearProviders();
+
+// Ensure AOT trimmer preserves endpoint method metadata
+AotEndpointPreserver.EnsureEndpointsPreserved();
+
 builder.Services.ConfigureHttpJsonOptions(o => o.SerializerOptions.TypeInfoResolverChain.Add(BenchSerializerContext.Default));
 builder.Services.AddFastEndpoints(
     o =>
     {
-        o.SourceGeneratorDiscoveredTypes = DiscoveredTypes.All;
+        o.DisableAutoDiscovery = true;
+        o.Assemblies = [typeof(Program).Assembly];
     });
 
 var app = builder.Build();
-app.UseMiddleware<AotResponseBufferingMiddleware>(); // Must be before FastEndpoints for AOT
 app.UseFastEndpoints(
     c =>
     {

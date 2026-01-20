@@ -14,7 +14,6 @@ var app = builder.Build();
 app.UseFastEndpoints(
     c =>
     {
-        c.Binding.ReflectionCache.AddFromFEBenchSourceGen();
         c.Serializer.Options.TypeInfoResolverChain.Add(BenchSerializerContext.Default);
     });
 app.Run();

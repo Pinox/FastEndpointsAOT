@@ -11,6 +11,21 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
+    <!-- Exclude files that are already defined in referenced projects (Core, Messaging, JobQueues) -->
+    <ItemGroup>
+        <Compile Remove="ServiceResolver\**\*.cs" />
+        <!-- Exclude duplicate Messaging files that exist in FastEndpoints.Messaging project -->
+        <Compile Remove="Messaging\Commands\CommandExtensions.cs" />
+        <Compile Remove="Messaging\Commands\CommandHandlerDefinition.cs" />
+        <Compile Remove="Messaging\Commands\CommandHandlerExecutor.cs" />
+        <Compile Remove="Messaging\Commands\CommandMiddlewareConfig.cs" />
+        <Compile Remove="Messaging\Commands\ICommandMiddleware.cs" />
+        <!-- Exclude duplicate Events files -->
+        <Compile Remove="Messaging\Events\**\*.cs" />
+        <!-- Exclude duplicate Jobs files that exist in FastEndpoints.JobQueues project -->
+        <Compile Remove="Messaging\Jobs\**\*.cs" />
+    </ItemGroup>
+
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App"/>
 

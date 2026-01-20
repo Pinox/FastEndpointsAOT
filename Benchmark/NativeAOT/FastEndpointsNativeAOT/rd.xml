@@ -3,16 +3,30 @@
         <!-- Preserve all types in the main assembly for Native AOT -->
         <Assembly Name="FastEndpointsNativeAOT" Dynamic="Required All" />
         
+        <!-- Preserve FastEndpoints runtime assemblies -->
+        <Assembly Name="FastEndpoints" Dynamic="Required All" />
+        <Assembly Name="FastEndpoints.Core" Dynamic="Required All" />
+        
+        <!-- Preserve ASP.NET Core assemblies -->
+        <Assembly Name="Microsoft.AspNetCore" Dynamic="Required All" />
+        <Assembly Name="Microsoft.AspNetCore.Http" Dynamic="Required All" />
+        <Assembly Name="Microsoft.AspNetCore.Routing" Dynamic="Required All" />
+        <Assembly Name="Microsoft.Extensions.DependencyInjection" Dynamic="Required All" />
+        <Assembly Name="Microsoft.Extensions.Hosting" Dynamic="Required All" />
+        
+        <!-- Preserve System assemblies -->
+        <Assembly Name="System.Text.Json" Dynamic="Required All" />
+        <Assembly Name="System.Linq" Dynamic="Required All" />
+        <Assembly Name="System.Collections" Dynamic="Required All" />
+        
         <!-- NOTE: Testing revealed that all other assemblies can be safely removed!
              FastEndpoints uses source generators which eliminate the need for runtime reflection.
              This saves ~3.3 MB from the published binary (158.16 MB → 154.87 MB).
              
              Previously preserved assemblies (no longer needed):
-             - FastEndpoints (source-generated discovery)
              - FastEndpoints.Attributes (compile-time only)
              - FluentValidation (properly trimmed by AOT)
              - Microsoft.AspNetCore.* (properly handled by trimmer)
-             - System.Text.Json (source-generated serialization)
         -->
     </Application>
 </Directives>
