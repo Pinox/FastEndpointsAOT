@@ -7,6 +7,19 @@
         <InvariantGlobalization>true</InvariantGlobalization>
         <DebugType>None</DebugType>
         <DebugSymbols>false</DebugSymbols>
+        
+        <!-- Speed optimizations -->
+        <OptimizationPreference>Speed</OptimizationPreference>
+        <TieredPGO>true</TieredPGO>
+        
+        <!-- Use native CPU instruction set (AVX2, SSE4.2, etc.) -->
+        <IlcInstructionSet>native</IlcInstructionSet>
+        
+        <!-- Aggressive optimizations -->
+        <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
+        
+        <!-- Disable stack traces for speed (not needed for benchmarks) -->
+        <StackTraceSupport>false</StackTraceSupport>
     </PropertyGroup>
 
     <ItemGroup>

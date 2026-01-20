@@ -547,10 +547,10 @@ if ($Results.Count -gt 0) {
         Write-Host ("{0,-32} {1,14:N0} {2,9} {3,10}" -f $r.Name, $r.ReqsPerSec, $stddev, $reqsRel)
     }
     
-    # Latency table with P50/P95/P99
+    # Latency table with P50/P95/P99 (sorted by avg latency)
     Write-Host ""
-    Write-Host "LATENCY PERCENTILES (µs):" -ForegroundColor Yellow
-    $sortedByLatency = $Results | Sort-Object -Property P99Us
+    Write-Host "LATENCY PERCENTILES (µs, sorted by avg):" -ForegroundColor Yellow
+    $sortedByLatency = $Results | Sort-Object -Property LatencyUs
     Write-Host ("{0,-32} {1,10} {2,10} {3,10} {4,10}" -f "Framework", "Avg", "P50", "P95", "P99")
     Write-Host ("{0,-32} {1,10} {2,10} {3,10} {4,10}" -f "---------", "---", "---", "---", "---")
     
