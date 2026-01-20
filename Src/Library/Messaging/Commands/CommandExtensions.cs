@@ -1,15 +1,21 @@
 using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FastEndpoints;
 
 //key: tCommand
 //val: command handler definition
-class CommandHandlerRegistry : ConcurrentDictionary<Type, CommandHandlerDefinition>;
+
+/// <summary>
+/// registry for command handlers. maps command types to their handler definitions.
+/// </summary>
+public class CommandHandlerRegistry : ConcurrentDictionary<Type, CommandHandlerDefinition>;
 
 public static class CommandExtensions
 {
     internal static bool TestHandlersPresent;
+    internal static bool UsePreGeneratedExecutors;
 
     /// <summary>
     /// executes the command that does not return a result
@@ -39,17 +45,38 @@ public static class CommandExtensions
         if (def is null)
             throw new InvalidOperationException($"Unable to create an instance of the handler for command [{tCommand.FullName}]");
 
-        def.HandlerExecutor ??= Cfg.ServiceResolver.CreateSingleton(Types.CommandHandlerExecutorOf2.MakeGenericType(tCommand, typeof(TResult)));
+        // Use pre-generated executor if available (AOT-safe path)
+        if (def.HandlerExecutor is null)
+        {
+            if (UsePreGeneratedExecutors)
+            {
+                throw new InvalidOperationException(
+                    $"No pre-generated executor found for command [{tCommand.FullName}]. " +
+                    "When using AOT, ensure RegisterCommandExecutors() is called with source-generated executors.");
+            }
+
+            def.HandlerExecutor = CreateExecutorFallback(tCommand, typeof(TResult));
+        }
 
         // ReSharper disable once InvertIf
         if (TestHandlersPresent)
         {
-            var tHandlerInterface = Types.ICommandHandlerOf2.MakeGenericType(tCommand, typeof(TResult));
+            var tHandlerInterface = CreateHandlerInterfaceType(tCommand, typeof(TResult));
             def.HandlerType = Cfg.ServiceResolver.TryResolve(tHandlerInterface)?.GetType() ?? def.HandlerType;
         }
 
         return ((ICommandHandlerExecutor<TResult>)def.HandlerExecutor).Execute(command, def.HandlerType, ct);
     }
+
+    [RequiresDynamicCode("MakeGenericType is not AOT compatible. Use source-generated executors instead.")]
+    [RequiresUnreferencedCode("MakeGenericType may break in trimmed applications.")]
+    static object CreateExecutorFallback(Type tCommand, Type tResult)
+        => Cfg.ServiceResolver.CreateSingleton(Types.CommandHandlerExecutorOf2.MakeGenericType(tCommand, tResult));
+
+    [RequiresDynamicCode("MakeGenericType is not AOT compatible.")]
+    [RequiresUnreferencedCode("MakeGenericType may break in trimmed applications.")]
+    static Type CreateHandlerInterfaceType(Type tCommand, Type tResult)
+        => Types.ICommandHandlerOf2.MakeGenericType(tCommand, tResult);
 
     /// <summary>
     /// registers a fake command handler for unit testing purposes
@@ -133,10 +160,58 @@ public static class CommandExtensions
         return services;
     }
 
+    /// <summary>
+    /// enables AOT mode for command execution, requiring all executors to be pre-generated.
+    /// when enabled, MakeGenericType will not be used and an exception will be thrown if a pre-generated executor is not found.
+    /// </summary>
+    public static void EnableAotMode()
+    {
+        UsePreGeneratedExecutors = true;
+    }
+
+    /// <summary>
+    /// Registers pre-generated command handler executors with the command registry.
+    /// This method should be called at application startup with a delegate that calls the source-generated RegisterCommandExecutors method.
+    /// </summary>
+    /// <param name="sp">The service provider to resolve middleware dependencies.</param>
+    /// <param name="registrationAction">
+    /// A delegate that receives the registry and service provider. 
+    /// Typically this calls the source-generated GeneratedReflection.RegisterCommandExecutors method.
+    /// </param>
+    /// <example>
+    /// <code>
+    /// // In Program.cs after app.UseFastEndpoints():
+    /// app.RegisterCommandExecutors((registry, sp) => GeneratedReflection.RegisterCommandExecutors(registry, sp));
+    /// CommandExtensions.EnableAotMode(); // Optional: require all commands to use pre-generated executors
+    /// </code>
+    /// </example>
+    public static IServiceProvider RegisterCommandExecutors(
+        this IServiceProvider sp,
+        Action<CommandHandlerRegistry, IServiceProvider> registrationAction)
+    {
+        var registry = sp.GetRequiredService<CommandHandlerRegistry>();
+        registrationAction(registry, sp);
+        return sp;
+    }
+
+    [RequiresDynamicCode("MakeGenericType is not AOT compatible. Use source-generated executors for open generic commands.")]
+    [RequiresUnreferencedCode("MakeGenericType may break in trimmed applications.")]
     static void InitGenericHandler<TResult>(ref CommandHandlerDefinition? def, Type tCommand, CommandHandlerRegistry registry)
     {
         if (def is not null || !tCommand.IsGenericType)
             return;
+
+        // Check if a pre-generated closed generic handler is already registered
+        if (registry.TryGetValue(tCommand, out def))
+            return;
+
+        if (UsePreGeneratedExecutors)
+        {
+            throw new InvalidOperationException(
+                $"No pre-generated handler found for generic command [{tCommand.FullName}]. " +
+                "When using AOT, ensure all generic command usages are discovered by the source generator. " +
+                "Alternatively, manually register closed generic handlers at startup.");
+        }
 
         var tGenCmd = tCommand.GetGenericTypeDefinition();
 

@@ -38,31 +38,35 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Shared\Shared.csproj" />
+        <!-- ApiRequestGenerator temporarily disabled due to unrelated generation issues
         <ProjectReference Include="..\ApiRequestGenerator\ApiRequestGenerator.csproj" 
                           OutputItemType="Analyzer" 
                           ReferenceOutputAssembly="false" />
+        -->
     </ItemGroup>
 
     <ItemGroup>
-        <!-- NuGet packages for runtime libraries -->
-        <PackageReference Include="FastEndpoints" />
-        <PackageReference Include="FastEndpoints.Messaging.Remote" />
-        <PackageReference Include="FastEndpoints.Security" />
+        <!-- Local project references instead of NuGet packages -->
+        <ProjectReference Include="..\Src\Library\FastEndpoints.csproj" />
+        <ProjectReference Include="..\Src\Messaging\Messaging.Remote\FastEndpoints.Messaging.Remote.csproj" />
+        <ProjectReference Include="..\Src\Security\FastEndpoints.Security.csproj" />
         
         <!-- Source generator - use local project to test AOT fix -->
         <ProjectReference Include="..\Src\Generator\FastEndpoints.Generator.csproj" 
                           OutputItemType="Analyzer" 
                           ReferenceOutputAssembly="false" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="NJsonSchema" />
         <PackageReference Include="Scalar.AspNetCore" />
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
     </ItemGroup>
 
-  <!-- Exclude all TestCases - they are for integration tests with separate test fixtures -->
+  <!-- Exclude test cases with issues unrelated to our changes, but keep CommandHandler/CommandBus tests -->
   <ItemGroup>
     <Compile Remove="[Features]\TestCases\**\*.cs" />
-    <None Remove="[Features]\TestCases\**\*.*" />
-    <Content Remove="[Features]\TestCases\**\*.*" />
+    <!-- Re-include only Messaging folder for command handler tests -->
+    <Compile Include="[Features]\TestCases\Messaging\CommandHandlerTest\**\*.cs" />
+    <Compile Include="[Features]\TestCases\Messaging\CommandBusTest\**\*.cs" />
   </ItemGroup>
 
   <!-- Exclude legacy docs hosting and processors under Hostings -->
@@ -71,10 +75,15 @@
     <Compile Remove="Hostings\ApiDocsHosting.cs" />
   </ItemGroup>
 
-    <!--<PropertyGroup>
+    <PropertyGroup>
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
         <CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
-    </PropertyGroup>-->
+    </PropertyGroup>
+    
+    <!-- Exclude generated files from compilation (they're already included by the generator) -->
+    <ItemGroup>
+        <Compile Remove="Generated\**\*.cs" />
+    </ItemGroup>
 
     <!-- Include rd.xml for AOT/trimming directives -->
     <ItemGroup>

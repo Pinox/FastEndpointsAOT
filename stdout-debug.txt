@@ -1,0 +1,1065 @@
+Using launch settings from Web\Properties\launchSettings.json...
+Building...
+[DEBUG] Starting application...
+[DEBUG] WebApplication.CreateBuilder completed
+[DEBUG] Adding services...
+[DEBUG] AddCoreAppServices called
+[DEBUG] AddCors completed
+[DEBUG] AddOutputCache completed
+[DEBUG] AddIdempotency completed
+[DEBUG] AddResponseCaching completed
+[DEBUG] ConfigureHttpJsonOptions completed
+[DEBUG] AddCoreAppServices completed
+[DEBUG] About to analyze discovered types...
+
+[ENDPOINT-DEBUG] ========== Starting Endpoint Type Analysis ==========
+[ENDPOINT-DEBUG] Total discovered types: 51
+
+[ENDPOINT-DEBUG] Analyzing: Admin.Login.Endpoint_V1
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`2[[Admin.Login.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Shared.Contracts.Admin.LoginResponse, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Admin.Login.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Admin.Login.Endpoint_V1
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Admin.Login.Endpoint_V1
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Admin.Login.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Shared.Contracts.Admin.LoginResponse, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   === ALL METHODS for Endpoint_V1 ===
+[ENDPOINT-DEBUG]       Configure (Declaring: Endpoint_V1)
+[ENDPOINT-DEBUG]       HandleAsync (Declaring: Endpoint_V1)
+[ENDPOINT-DEBUG]       ExecuteAsync (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       TryResolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       TryResolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       Resolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       Resolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       CreateScope (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       TryResolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       TryResolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       Resolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       Resolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       PublishAsync (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       ProcessorState (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnBeforeValidate (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnBeforeValidateAsync (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnAfterValidate (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnAfterValidateAsync (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnBeforeHandle (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnBeforeHandleAsync (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnAfterHandle (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnAfterHandleAsync (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnValidationFailed (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnValidationFailedAsync (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_Response (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       set_Response (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_User (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_Config (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_Env (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_Logger (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_BaseURL (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_HttpMethod (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_Form (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_Files (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_ResponseStarted (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       set_ResponseStarted (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       PostProcessor (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       PostProcessors (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       PreProcessor (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       PreProcessors (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       Routes (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       Verbs (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       Verbs (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_ValidationFailed (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       AddError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       AddError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       AddError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       ThrowError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       ThrowError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       ThrowError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       ThrowError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       ThrowError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       ThrowIfAnyErrors (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_Definition (Declaring: BaseEndpoint)
+[ENDPOINT-DEBUG]       get_HttpContext (Declaring: BaseEndpoint)
+[ENDPOINT-DEBUG]       get_ValidationFailures (Declaring: BaseEndpoint)
+[ENDPOINT-DEBUG]       GetType (Declaring: Object)
+[ENDPOINT-DEBUG]       ToString (Declaring: Object)
+[ENDPOINT-DEBUG]       Equals (Declaring: Object)
+[ENDPOINT-DEBUG]       GetHashCode (Declaring: Object)
+
+[ENDPOINT-DEBUG] Analyzing: Admin.Login.Endpoint_V2
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`2[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Admin.Login.Endpoint_V2
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Admin.Login.Endpoint_V2
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   === ALL METHODS for Endpoint_V2 ===
+[ENDPOINT-DEBUG]       Configure (Declaring: Endpoint_V2)
+[ENDPOINT-DEBUG]       HandleAsync (Declaring: Endpoint_V2)
+[ENDPOINT-DEBUG]       ExecuteAsync (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       TryResolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       TryResolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       Resolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       Resolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       CreateScope (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       TryResolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       TryResolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       Resolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       Resolve (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       PublishAsync (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       ProcessorState (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnBeforeValidate (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnBeforeValidateAsync (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnAfterValidate (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnAfterValidateAsync (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnBeforeHandle (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnBeforeHandleAsync (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnAfterHandle (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnAfterHandleAsync (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnValidationFailed (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       OnValidationFailedAsync (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_Response (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       set_Response (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_User (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_Config (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_Env (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_Logger (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_BaseURL (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_HttpMethod (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_Form (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_Files (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_ResponseStarted (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       set_ResponseStarted (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       PostProcessor (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       PostProcessors (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       PreProcessor (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       PreProcessors (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       Routes (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       Verbs (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       Verbs (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_ValidationFailed (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       AddError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       AddError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       AddError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       ThrowError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       ThrowError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       ThrowError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       ThrowError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       ThrowError (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       ThrowIfAnyErrors (Declaring: Endpoint`2)
+[ENDPOINT-DEBUG]       get_Definition (Declaring: BaseEndpoint)
+[ENDPOINT-DEBUG]       get_HttpContext (Declaring: BaseEndpoint)
+[ENDPOINT-DEBUG]       get_ValidationFailures (Declaring: BaseEndpoint)
+[ENDPOINT-DEBUG]       GetType (Declaring: Object)
+[ENDPOINT-DEBUG]       ToString (Declaring: Object)
+[ENDPOINT-DEBUG]       Equals (Declaring: Object)
+[ENDPOINT-DEBUG]       GetHashCode (Declaring: Object)
+
+[ENDPOINT-DEBUG] Analyzing: Admin.Login.Validator
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Validator`1[[Admin.Login.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FluentValidation.IValidator`1[[Admin.Login.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FluentValidation.IValidator
+[ENDPOINT-DEBUG]     - System.Collections.Generic.IEnumerable`1[[FluentValidation.IValidationRule, FluentValidation, Version=12.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0]]
+[ENDPOINT-DEBUG]     - System.Collections.IEnumerable
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpointValidator
+[ENDPOINT-DEBUG]   Public Instance Methods (36):
+[ENDPOINT-DEBUG]     Configure found: False
+[ENDPOINT-DEBUG]     HandleAsync found: False
+[ENDPOINT-DEBUG]     ExecuteAsync found: False
+[ENDPOINT-DEBUG]   === ALL METHODS for Validator ===
+[ENDPOINT-DEBUG]       TryResolve (Declaring: Validator`1)
+[ENDPOINT-DEBUG]       TryResolve (Declaring: Validator`1)
+[ENDPOINT-DEBUG]       Resolve (Declaring: Validator`1)
+[ENDPOINT-DEBUG]       Resolve (Declaring: Validator`1)
+[ENDPOINT-DEBUG]       CreateScope (Declaring: Validator`1)
+[ENDPOINT-DEBUG]       TryResolve (Declaring: Validator`1)
+[ENDPOINT-DEBUG]       TryResolve (Declaring: Validator`1)
+[ENDPOINT-DEBUG]       Resolve (Declaring: Validator`1)
+[ENDPOINT-DEBUG]       Resolve (Declaring: Validator`1)
+[ENDPOINT-DEBUG]       get_ClassLevelCascadeMode (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       set_ClassLevelCascadeMode (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       get_RuleLevelCascadeMode (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       set_RuleLevelCascadeMode (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       Validate (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       ValidateAsync (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       Validate (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       ValidateAsync (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       CreateDescriptor (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       RuleFor (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       RuleForEach (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       RuleSet (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       When (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       When (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       Unless (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       Unless (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       WhenAsync (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       WhenAsync (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       UnlessAsync (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       UnlessAsync (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       Include (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       Include (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       GetEnumerator (Declaring: AbstractValidator`1)
+[ENDPOINT-DEBUG]       GetType (Declaring: Object)
+[ENDPOINT-DEBUG]       ToString (Declaring: Object)
+[ENDPOINT-DEBUG]       Equals (Declaring: Object)
+[ENDPOINT-DEBUG]       GetHashCode (Declaring: Object)
+
+[ENDPOINT-DEBUG] Analyzing: Basics.Ping.PingEndpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Basics.Ping.PingEndpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Basics.Ping.PingEndpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Binding.Multipart.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`1[[Binding.Multipart.UploadRequest, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Binding.Multipart.UploadRequest, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Binding.Multipart.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Binding.Multipart.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Binding.Multipart.UploadRequest, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Binding.RouteAndQuery.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`1[[Shared.Contracts.Binding.RouteAndQueryRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Shared.Contracts.Binding.RouteAndQueryRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Binding.RouteAndQuery.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Binding.RouteAndQuery.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Shared.Contracts.Binding.RouteAndQueryRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Customers.Login.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Customers.Login.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Customers.Login.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest
+
+[ENDPOINT-DEBUG] Analyzing: Customers.Login.Endpoint+Endpoint_V1
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: Customers.Login.Endpoint
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Customers.Login.Endpoint+Endpoint_V1
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Customers.Login.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest
+
+[ENDPOINT-DEBUG] Analyzing: Customers.Login.Endpoint+Endpoint_V2
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`2[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Customers.Login.Endpoint+Endpoint_V2
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Customers.Login.Endpoint+Endpoint_V2
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Customers.UpdateWithHeader.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`1[[Shared.Contracts.Customers.UpdateCustomerWithHeaderRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Shared.Contracts.Customers.UpdateCustomerWithHeaderRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Customers.UpdateWithHeader.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Customers.UpdateWithHeader.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Shared.Contracts.Customers.UpdateCustomerWithHeaderRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Domain.Customers.Create.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`1[[Domain.Customers.Create.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Domain.Customers.Create.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Customers.Create.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Customers.Create.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Domain.Customers.Create.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Domain.Customers.CreateWithPropertiesDI.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`1[[Domain.Customers.CreateWithPropertiesDI.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Domain.Customers.CreateWithPropertiesDI.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Customers.CreateWithPropertiesDI.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Customers.CreateWithPropertiesDI.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Domain.Customers.CreateWithPropertiesDI.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Domain.Customers.List.Recent.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Customers.List.Recent.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Customers.List.Recent.Endpoint
+
+[ENDPOINT-DEBUG] Analyzing: Domain.Customers.List.Recent.Endpoint_V1
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: Domain.Customers.List.Recent.Endpoint
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Customers.List.Recent.Endpoint_V1
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Customers.List.Recent.Endpoint
+
+[ENDPOINT-DEBUG] Analyzing: Domain.Customers.Update.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`1[[Domain.Customers.Update.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Domain.Customers.Update.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Customers.Update.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Customers.Update.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Domain.Customers.Update.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Domain.Inventory.GetProduct.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest`1[[Shared.Contracts.Inventory.GetProductResponse, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Inventory.GetProduct.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest`1[[Shared.Contracts.Inventory.GetProductResponse, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Inventory.GetProduct.Endpoint
+
+[ENDPOINT-DEBUG] Analyzing: Domain.Inventory.List.Recent.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest`1[[Shared.Contracts.Inventory.ListRecentInventoryResponse, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Inventory.List.Recent.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Inventory.List.Recent.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest`1[[Shared.Contracts.Inventory.ListRecentInventoryResponse, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+
+[ENDPOINT-DEBUG] Analyzing: Domain.Inventory.Manage.Create.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`1[[Domain.Inventory.Manage.Create.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Domain.Inventory.Manage.Create.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Inventory.Manage.Create.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Inventory.Manage.Create.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Domain.Inventory.Manage.Create.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Domain.Inventory.Manage.Create.Validator
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Validator`1[[Domain.Inventory.Manage.Create.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FluentValidation.IValidator`1[[Domain.Inventory.Manage.Create.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FluentValidation.IValidator
+[ENDPOINT-DEBUG]     - System.Collections.Generic.IEnumerable`1[[FluentValidation.IValidationRule, FluentValidation, Version=12.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0]]
+[ENDPOINT-DEBUG]     - System.Collections.IEnumerable
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpointValidator
+[ENDPOINT-DEBUG]   Public Instance Methods (36):
+[ENDPOINT-DEBUG]     Configure found: False
+[ENDPOINT-DEBUG]     HandleAsync found: False
+[ENDPOINT-DEBUG]     ExecuteAsync found: False
+
+[ENDPOINT-DEBUG] Analyzing: Domain.Sales.Orders.Create.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`3[[Shared.Contracts.Sales.Orders.CreateOrderRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Shared.Contracts.Sales.Orders.CreateOrderResponse, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Domain.Sales.Orders.Create.MyMapper, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Shared.Contracts.Sales.Orders.CreateOrderRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.IHasMapper`1[[Domain.Sales.Orders.Create.MyMapper, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Public Instance Methods (64):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Sales.Orders.Create.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Sales.Orders.Create.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Shared.Contracts.Sales.Orders.CreateOrderRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Shared.Contracts.Sales.Orders.CreateOrderResponse, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+
+[ENDPOINT-DEBUG] Analyzing: Domain.Sales.Orders.Retrieve.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`2[[Shared.Contracts.Sales.Orders.RetrieveOrderRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Shared.Contracts.Sales.Orders.RetrieveOrderResponse, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Shared.Contracts.Sales.Orders.RetrieveOrderRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Sales.Orders.Retrieve.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Domain.Sales.Orders.Retrieve.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Shared.Contracts.Sales.Orders.RetrieveOrderRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Shared.Contracts.Sales.Orders.RetrieveOrderResponse, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+
+[ENDPOINT-DEBUG] Analyzing: Inventory.Manage.Delete.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`1[[Inventory.Manage.Delete.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Inventory.Manage.Delete.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Inventory.Manage.Delete.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Inventory.Manage.Delete.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Inventory.Manage.Delete.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Inventory.Manage.Update.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`1[[Inventory.Manage.Update.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Inventory.Manage.Update.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Inventory.Manage.Update.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Inventory.Manage.Update.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Inventory.Manage.Update.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Inventory.Manage.Update.Validator
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Validator`1[[Inventory.Manage.Update.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FluentValidation.IValidator`1[[Inventory.Manage.Update.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FluentValidation.IValidator
+[ENDPOINT-DEBUG]     - System.Collections.Generic.IEnumerable`1[[FluentValidation.IValidationRule, FluentValidation, Version=12.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0]]
+[ENDPOINT-DEBUG]     - System.Collections.IEnumerable
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpointValidator
+[ENDPOINT-DEBUG]   Public Instance Methods (36):
+[ENDPOINT-DEBUG]     Configure found: False
+[ENDPOINT-DEBUG]     HandleAsync found: False
+[ENDPOINT-DEBUG]     ExecuteAsync found: False
+
+[ENDPOINT-DEBUG] Analyzing: Pipeline.PrePost.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`1[[Shared.Contracts.Pipeline.PipelineRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Shared.Contracts.Pipeline.PipelineRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Pipeline.PrePost.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Pipeline.PrePost.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Shared.Contracts.Pipeline.PipelineRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Security.ApiKey.FE_ApiKeyGet
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.ApiKey.FE_ApiKeyGet
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.ApiKey.FE_ApiKeyGet
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Security.ApiKey.FE_ApiKeyVerify
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.ApiKey.FE_ApiKeyVerify
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.ApiKey.FE_ApiKeyVerify
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Security.Claims.VerifyClaim
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`2[[Security.Claims.VerifyClaimRequest, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Security.Claims.VerifyClaimResponse, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Security.Claims.VerifyClaimRequest, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Claims.VerifyClaim
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Claims.VerifyClaim
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Security.Claims.VerifyClaimRequest, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Security.Claims.VerifyClaimResponse, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+
+[ENDPOINT-DEBUG] Analyzing: Security.Cookie.FE_CookieGetCookie
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Cookie.FE_CookieGetCookie
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Cookie.FE_CookieGetCookie
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest
+
+[ENDPOINT-DEBUG] Analyzing: Security.Cookie.FE_CookieVerify
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Cookie.FE_CookieVerify
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Cookie.FE_CookieVerify
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Security.Diagnostics.WhoAmI
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest`1[[Shared.Contracts.Security.WhoAmIResponse, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Diagnostics.WhoAmI
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Diagnostics.WhoAmI
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest`1[[Shared.Contracts.Security.WhoAmIResponse, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+
+[ENDPOINT-DEBUG] Analyzing: Security.Jwt.FE_JWTGetToken
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Jwt.FE_JWTGetToken
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Jwt.FE_JWTGetToken
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Security.Jwt.FE_JWTVerify
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Jwt.FE_JWTVerify
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Jwt.FE_JWTVerify
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Security.Policies.AdminOnly.AdminPolicyVerify
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Policies.AdminOnly.AdminPolicyVerify
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Policies.AdminOnly.AdminPolicyVerify
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Security.Policies.UserOnly.UserPolicyVerify
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Policies.UserOnly.UserPolicyVerify
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Security.Policies.UserOnly.UserPolicyVerify
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: TestCases.CommandBusTest.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: TestCases.CommandBusTest.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: TestCases.CommandBusTest.Endpoint
+
+[ENDPOINT-DEBUG] Analyzing: TestCases.CommandHandlerTest.ConcreteCmdEndpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: TestCases.CommandHandlerTest.ConcreteCmdEndpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: TestCases.CommandHandlerTest.ConcreteCmdEndpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: TestCases.CommandHandlerTest.GetHandler
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest`1[[System.Collections.Generic.IEnumerable`1[[System.Guid, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: TestCases.CommandHandlerTest.GetHandler
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: TestCases.CommandHandlerTest.GetHandler
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest`1[[System.Collections.Generic.IEnumerable`1[[System.Guid, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: TestCases.CommandHandlerTest.GetHandlerWithoutResult
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.EndpointWithoutRequest`1[[System.Guid, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (7):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[FastEndpoints.EmptyRequest, FastEndpoints, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]     - FastEndpoints.INoRequest
+[ENDPOINT-DEBUG]   Public Instance Methods (62):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: TestCases.CommandHandlerTest.GetHandlerWithoutResult
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: TestCases.CommandHandlerTest.GetHandlerWithoutResult
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.EndpointWithoutRequest`1[[System.Guid, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Uploads.Image.Save.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`1[[Uploads.Image.Save.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Uploads.Image.Save.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Uploads.Image.Save.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Uploads.Image.Save.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Uploads.Image.Save.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Uploads.Image.Save.Validator
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Validator`1[[Uploads.Image.Save.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FluentValidation.IValidator`1[[Uploads.Image.Save.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FluentValidation.IValidator
+[ENDPOINT-DEBUG]     - System.Collections.Generic.IEnumerable`1[[FluentValidation.IValidationRule, FluentValidation, Version=12.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0]]
+[ENDPOINT-DEBUG]     - System.Collections.IEnumerable
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpointValidator
+[ENDPOINT-DEBUG]   Public Instance Methods (36):
+[ENDPOINT-DEBUG]     Configure found: False
+[ENDPOINT-DEBUG]     HandleAsync found: False
+[ENDPOINT-DEBUG]     ExecuteAsync found: False
+
+[ENDPOINT-DEBUG] Analyzing: Uploads.Image.SaveTyped.Endpoint
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`1[[Uploads.Image.SaveTyped.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Uploads.Image.SaveTyped.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Uploads.Image.SaveTyped.Endpoint
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Uploads.Image.SaveTyped.Endpoint
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Uploads.Image.SaveTyped.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Uploads.Image.SaveTyped.Validator
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Validator`1[[Uploads.Image.SaveTyped.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FluentValidation.IValidator`1[[Uploads.Image.SaveTyped.Request, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FluentValidation.IValidator
+[ENDPOINT-DEBUG]     - System.Collections.Generic.IEnumerable`1[[FluentValidation.IValidationRule, FluentValidation, Version=12.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0]]
+[ENDPOINT-DEBUG]     - System.Collections.IEnumerable
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpointValidator
+[ENDPOINT-DEBUG]   Public Instance Methods (36):
+[ENDPOINT-DEBUG]     Configure found: False
+[ENDPOINT-DEBUG]     HandleAsync found: False
+[ENDPOINT-DEBUG]     ExecuteAsync found: False
+
+[ENDPOINT-DEBUG] Analyzing: Versioning.Sample.EndpointV1
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`2[[Shared.Contracts.Versioning.VersionSampleRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Shared.Contracts.Versioning.VersionSampleRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Versioning.Sample.EndpointV1
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Versioning.Sample.EndpointV1
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Shared.Contracts.Versioning.VersionSampleRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] Analyzing: Versioning.Sample.EndpointV2
+[ENDPOINT-DEBUG]   IsAbstract: False
+[ENDPOINT-DEBUG]   BaseType: FastEndpoints.Endpoint`2[[Shared.Contracts.Versioning.VersionSampleRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+[ENDPOINT-DEBUG]   Interfaces (6):
+[ENDPOINT-DEBUG]     - FastEndpoints.IEndpoint
+[ENDPOINT-DEBUG]     - FastEndpoints.IResponseSender
+[ENDPOINT-DEBUG]     - FastEndpoints.IEventBus
+[ENDPOINT-DEBUG]     - FastEndpoints.IServiceResolverBase
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors`1[[Shared.Contracts.Versioning.VersionSampleRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+[ENDPOINT-DEBUG]     - FastEndpoints.IValidationErrors
+[ENDPOINT-DEBUG]   Public Instance Methods (60):
+[ENDPOINT-DEBUG]     Configure found: True
+[ENDPOINT-DEBUG]       DeclaringType: Versioning.Sample.EndpointV2
+[ENDPOINT-DEBUG]       HasNotImplementedAttribute: False
+[ENDPOINT-DEBUG]     HandleAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: Versioning.Sample.EndpointV2
+[ENDPOINT-DEBUG]     ExecuteAsync found: True
+[ENDPOINT-DEBUG]       DeclaringType: FastEndpoints.Endpoint`2[[Shared.Contracts.Versioning.VersionSampleRequest, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Object, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+[ENDPOINT-DEBUG] ========== End Endpoint Type Analysis ==========
+
+[DEBUG] Analysis complete, now calling AddFastEndpoints...
+[DEBUG] Services added successfully
+[DEBUG] Building app...
+[DEBUG] App built successfully
+[DEBUG] Configuring pipeline...
+[DEBUG] UseLocalizationConfigured called
+[DEBUG] UseLocalizationConfigured completed
+[DEBUG] UseExceptionHandling called
+[DEBUG] UseExceptionHandling completed
+[DEBUG] UseResponseCachingRoutingCors called
+[DEBUG] UseResponseCachingRoutingCors completed
+info: Admin.Login.Endpoint_V1[0]
+      constructor injection works!
+info: FastEndpoints.StartupTimer[1]
+      Registered 56 endpoints in 208 milliseconds.
+[DEBUG] Pipeline configured successfully
+[DEBUG] Starting app.Run()...
+info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[63]
+      User profile is available. Using 'C:\Users\johan\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: https://localhost:5001
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:5000
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: X:\Squeaky.Devices\samples\FastEndpoints\latest\Web
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost:5000/tests/commands - - -

@@ -19,11 +19,15 @@ public class ReflectionGenerator : IIncrementalGenerator
     const string IEnumerable = "System.Collections.IEnumerable";
     const string IParsable = "System.IParsable<";
     const string JsonIgnoreAttribute = "System.Text.Json.Serialization.JsonIgnoreAttribute";
+    const string ICommandHandlerOf1 = "FastEndpoints.ICommandHandler<";
+    const string ICommandHandlerOf2 = "FastEndpoints.ICommandHandler<";
+    const string ICommand = "FastEndpoints.ICommand";
 
     readonly StringBuilder b = new();
     readonly StringBuilder _initArgsBuilder = new();
     string? _assemblyName;
     TypeCollector _collector = new();
+    readonly List<CommandHandlerInfo> _commandHandlers = new();
 
     // ReSharper restore InconsistentNaming
 
@@ -47,13 +51,46 @@ public class ReflectionGenerator : IIncrementalGenerator
             //should be re-assigned on every call. do not cache!
             _assemblyName = ctx.SemanticModel.Compilation.AssemblyName;
 
-            return ctx.SemanticModel.GetDeclaredSymbol(ctx.Node) is not ITypeSymbol type ||
-                   type.IsAbstract ||
-                   type.GetAttributes().Any(a => a.AttributeClass!.Name == DontRegisterAttribute || type.AllInterfaces.Length == 0)
-                       ? null
-                       : type.AllInterfaces.Any(i => i.ToDisplayString() == IEndpoint) //must be an endpoint
-                           ? new TypeInfo(ref _collector, type, true)
-                           : null;
+            if (ctx.SemanticModel.GetDeclaredSymbol(ctx.Node) is not ITypeSymbol type ||
+                type.IsAbstract ||
+                type.GetAttributes().Any(a => a.AttributeClass!.Name == DontRegisterAttribute || type.AllInterfaces.Length == 0))
+                return null;
+
+            // Check for endpoints
+            if (type.AllInterfaces.Any(i => i.ToDisplayString() == IEndpoint))
+                return new TypeInfo(ref _collector, type, true);
+
+            // Check for command handlers and extract command/result types
+            foreach (var ifc in type.AllInterfaces)
+            {
+                var ifcDisplay = ifc.ToDisplayString();
+                if (ifcDisplay.StartsWith(ICommandHandlerOf1) && ifc is INamedTypeSymbol { TypeArguments.Length: >= 1 } namedIfc)
+                {
+                    var tCommand = namedIfc.TypeArguments[0];
+                    var tResult = namedIfc.TypeArguments.Length > 1 ? namedIfc.TypeArguments[1] : null;
+                    var tResultName = tResult?.ToDisplayString() ?? "FastEndpoints.Void";
+
+                    // Skip if result is Void interface (use Void class instead)
+                    if (tResultName == "FastEndpoints.Void")
+                        tResult = null;
+
+                    var cmdInfo = new CommandHandlerInfo(
+                        type.ToDisplayString(),
+                        tCommand.ToDisplayString(),
+                        tResultName);
+
+                    if (!_commandHandlers.Any(c => c.CommandType == cmdInfo.CommandType))
+                    {
+                        _commandHandlers.Add(cmdInfo);
+                        // Also generate reflection data for the command type
+                        var cmdTypeInfo = new TypeInfo(ref _collector, tCommand, false);
+                    }
+
+                    break;
+                }
+            }
+
+            return null;
         }
     }
 
@@ -178,10 +215,53 @@ public class ReflectionGenerator : IIncrementalGenerator
             """
                     return cache;
                 }
+
+            """);
+
+        // Generate command executor registrations (always generate the method, even if empty)
+        b.w(
+            """
+                /// <summary>
+                /// register pre-generated command handler executors from the source generator.
+                /// this enables AOT compatibility by avoiding MakeGenericType at runtime.
+                /// </summary>
+                public static void RegisterCommandExecutors(CommandHandlerRegistry registry, IServiceProvider sp)
+                {
+
+            """);
+
+        if (_commandHandlers.Count > 0)
+        {
+            foreach (var cmd in _commandHandlers)
+            {
+                b.w(
+                    $$"""
+                              // {{cmd.CommandType}} -> {{cmd.HandlerType}}
+                              registry[typeof({{cmd.CommandType}})] = new(typeof({{cmd.HandlerType}}))
+                              {
+                                  HandlerExecutor = new CommandHandlerExecutor<{{cmd.CommandType}}, {{cmd.ResultType}}>(
+                                      sp.GetService<System.Collections.Generic.IEnumerable<FastEndpoints.ICommandMiddleware<{{cmd.CommandType}}, {{cmd.ResultType}}>>>()
+                                      ?? System.Array.Empty<FastEndpoints.ICommandMiddleware<{{cmd.CommandType}}, {{cmd.ResultType}}>>())
+                              };
+
+                      """);
+            }
+        }
+
+        // Close the RegisterCommandExecutors method
+        b.w(
+            """
+                }
+
+            """);
+
+        b.w(
+            """
             }
             """);
 
         _collector.Reset();
+        _commandHandlers.Clear();
 
         return b.ToString();
 
@@ -465,5 +545,15 @@ public class ReflectionGenerator : IIncrementalGenerator
             => obj is null
                    ? 0
                    : obj.HashCode;
+    }
+
+    /// <summary>
+    /// information about a command handler for source generation.
+    /// </summary>
+    sealed class CommandHandlerInfo(string handlerType, string commandType, string resultType)
+    {
+        public string HandlerType { get; } = handlerType;
+        public string CommandType { get; } = commandType;
+        public string ResultType { get; } = resultType;
     }
 }

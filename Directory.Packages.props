@@ -30,6 +30,12 @@
     <PackageVersion Include="Microsoft.OpenApi.Kiota.Builder" Version="1.28.0" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageVersion Include="NJsonSchema" Version="11.4.0" />
+    <PackageVersion Include="NSwag.AspNetCore" Version="14.4.0" />
+    <PackageVersion Include="NSwag.CodeGeneration.CSharp" Version="14.4.0" />
+    <PackageVersion Include="NSwag.CodeGeneration.TypeScript" Version="14.4.0" />
+    <PackageVersion Include="NSwag.Generation" Version="14.4.0" />
+    <PackageVersion Include="NSwag.Generation.AspNetCore" Version="14.4.0" />
     <PackageVersion Include="RichardSzalay.MockHttp" Version="7.0.0" />
     <PackageVersion Include="Scalar.AspNetCore" Version="2.12.11" />
     <PackageVersion Include="Shouldly" Version="4.3.0" />

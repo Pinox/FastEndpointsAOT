@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FastEndpoints.Testing" />
+    <!-- Local project reference instead of NuGet package -->
+    <ProjectReference Include="..\..\..\Src\Testing\FastEndpoints.Testing.csproj" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="Shouldly" />

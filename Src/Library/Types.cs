@@ -27,6 +27,9 @@ static class Types
     internal static readonly Type HideFromDocsAttribute = typeof(HideFromDocsAttribute);
     internal static readonly Type Http = typeof(Http);
     internal static readonly Type ICommandHandler = typeof(ICommandHandler);
+    internal static readonly Type ICommandHandlerOf1 = typeof(ICommandHandler<>);
+    internal static readonly Type ICommandHandlerOf2 = typeof(ICommandHandler<,>);
+    internal static readonly Type CommandHandlerExecutorOf2 = typeof(CommandHandlerExecutor<,>);
     internal static readonly Type IDictionary = typeof(IDictionary);
     internal static readonly Type IEndpoint = typeof(IEndpoint);
     internal static readonly Type IEndpointFeature = typeof(IEndpointFeature);
@@ -59,5 +62,6 @@ static class Types
     internal static readonly Type ValidatorOf1 = typeof(AbstractValidator<>);
     internal static readonly Type ValidationAttribute = typeof(System.ComponentModel.DataAnnotations.ValidationAttribute);
     internal static readonly Type Void = typeof(void);
+    internal static readonly Type VoidResult = typeof(Void);
     internal static readonly Type Uri = typeof(Uri);
 }

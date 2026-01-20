@@ -14,7 +14,7 @@ sealed class GenericCommandHandler<TResult> : ICommandHandler<GenericCommand<TRe
     }
 }
 
-public class GetHandler : EndpointWithoutRequest<List<int>>
+public class GetHandler : EndpointWithoutRequest<IEnumerable<Guid>>
 {
     public override void Configure()
     {
@@ -47,7 +47,7 @@ sealed class GenericNoResultCommandHandler<T> : ICommandHandler<GenericNoResultC
     }
 }
 
-public class GetHandlerWithoutResult : EndpointWithoutRequest<List<int>>
+public class GetHandlerWithoutResult : EndpointWithoutRequest<Guid>
 {
     public override void Configure()
     {

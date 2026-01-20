@@ -15,7 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FastEndpoints.Attributes" />
+    <!-- Local project reference instead of NuGet package -->
+    <ProjectReference Include="..\Src\Attributes\FastEndpoints.Attributes.csproj" />
   </ItemGroup>
 
 </Project>

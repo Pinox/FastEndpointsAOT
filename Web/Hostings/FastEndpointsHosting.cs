@@ -19,7 +19,8 @@ public static class FastEndpointsHosting
 
     // Pipeline: Configure FastEndpoints
     public static IApplicationBuilder UseFastEndpointsPipeline(this IApplicationBuilder app)
-        => app.UseFastEndpoints(c =>
+    {
+        app.UseFastEndpoints(c =>
         {
             c.Validation.EnableDataAnnotationsSupport = true;
 
@@ -55,4 +56,14 @@ public static class FastEndpointsHosting
             c.Throttle.HeaderName = "X-Custom-Throttle-Header";
             c.Throttle.Message = "Custom Error Response";
         });
+
+        // Register pre-generated command handler executors for AOT compatibility
+        var sp = (app as WebApplication)!.Services;
+        sp.RegisterCommandExecutors(GeneratedReflection.RegisterCommandExecutors);
+        
+        // Enable AOT mode to require pre-generated executors (will throw if missing)
+        CommandExtensions.EnableAotMode();
+
+        return app;
+    }
 }
