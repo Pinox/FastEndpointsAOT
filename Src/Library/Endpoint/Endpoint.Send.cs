@@ -27,12 +27,14 @@ public interface IResponseSender
 }
 
 /// <summary>
-/// this struct encapsulates the default response sending methods for endpoints.
+/// this class encapsulates the default response sending methods for endpoints.
 /// you can add your own custom send methods by writing extension methods targeting <see cref="IResponseSender" /> interface.
+/// Note: This is a class (not struct) for Native AOT compatibility.
 /// </summary>
-public readonly struct ResponseSender<TRequest, TResponse>(Endpoint<TRequest, TResponse> ep) : IResponseSender where TRequest : notnull
+#pragma warning disable RCS1074
+public sealed class ResponseSender<TRequest, TResponse>(Endpoint<TRequest, TResponse> ep) : IResponseSender where TRequest : notnull
 {
-    //NOTE: being a struct here reduces gc pressure (verified with benchmarks)
+    //NOTE: changed from struct to class for Native AOT compatibility
 
     public HttpContext HttpContext => ep.HttpContext;
     public List<ValidationFailure> ValidationFailures => ep.ValidationFailures;

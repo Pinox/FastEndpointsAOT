@@ -1,12 +1,14 @@
 ﻿using System.Linq.Expressions;
 
+#pragma warning disable RCS1074
 namespace FastEndpoints;
 
 /// <summary>
-/// a dto representing search parameters for pending job storage record retrieval
+/// a dto representing search parameters for pending job storage record retrieval.
+/// Note: This is a class (not struct) for Native AOT compatibility.
 /// </summary>
 /// <typeparam name="TStorageRecord">the type of storage record</typeparam>
-public struct PendingJobSearchParams<TStorageRecord> where TStorageRecord : IJobStorageRecord
+public sealed class PendingJobSearchParams<TStorageRecord> where TStorageRecord : IJobStorageRecord
 {
     /// <summary>
     /// the ID of the job queue for fetching the next batch of records for.

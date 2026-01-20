@@ -5,13 +5,15 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 
 #pragma warning disable CA1822
+#pragma warning disable RCS1074
 
 namespace FastEndpoints;
 
 /// <summary>
 /// binder context supplied to custom request binders.
+/// Note: This is a class (not struct) for Native AOT compatibility.
 /// </summary>
-public readonly struct BinderContext : IServiceResolverBase
+public sealed class BinderContext : IServiceResolverBase
 {
     /// <summary>
     /// the http context of the current request

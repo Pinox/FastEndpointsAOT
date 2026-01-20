@@ -1,14 +1,16 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.WebUtilities;
 
+#pragma warning disable RCS1074
 namespace FastEndpoints;
 
 /// <summary>
-/// represents a multipart form section which could contain either a <see cref="FormMultipartSection" /> or a <see cref="FileMultipartSection" />
+/// represents a multipart form section which could contain either a <see cref="FormMultipartSection" /> or a <see cref="FileMultipartSection" />.
+/// Note: This is a class (not struct) for Native AOT compatibility.
 /// </summary>
 /// <param name="form"></param>
 /// <param name="file"></param>
-public readonly struct MultipartSection(FormMultipartSection? form, FileMultipartSection? file)
+public sealed class MultipartSection(FormMultipartSection? form, FileMultipartSection? file)
 {
     public FormMultipartSection? FormSection { get; } = form;
 

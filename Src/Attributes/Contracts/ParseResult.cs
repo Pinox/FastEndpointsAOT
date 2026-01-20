@@ -1,9 +1,11 @@
-﻿namespace FastEndpoints;
+﻿#pragma warning disable RCS1074
+namespace FastEndpoints;
 
 /// <summary>
-/// dto used to hold the result of a value parsing operation
+/// dto used to hold the result of a value parsing operation.
+/// Note: This is a class (not struct) for Native AOT compatibility.
 /// </summary>
-public struct ParseResult
+public sealed class ParseResult
 {
     /// <summary>
     /// will be true if the parsing operation was a success
