@@ -2,13 +2,14 @@
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 using System.Collections.Immutable;
+using System.Linq;
 using System.Text;
 
 namespace FastEndpoints.Generator;
 
 /// <summary>
-/// Source generator that discovers FastEndpoints types (endpoints, validators, event handlers, command handlers)
-/// at compile time and generates a static list with [DynamicDependency] attributes for AOT compatibility.
+/// Discovers FastEndpoints types at compile time and generates a static list for AOT compatibility.
+/// Uses the Preserve&lt;T&gt;() pattern with [DynamicallyAccessedMembers] to instruct the AOT linker.
 /// </summary>
 [Generator(LanguageNames.CSharp)]
 public sealed class DiscoveredTypesGenerator : IIncrementalGenerator
@@ -16,15 +17,16 @@ public sealed class DiscoveredTypesGenerator : IIncrementalGenerator
     #region Constants
 
     /// <summary>
-    /// Attribute that marks types to be excluded from auto-registration.
+    /// Attribute that excludes types from auto-registration.
     /// </summary>
-    private const string DontRegisterAttribute = "DontRegisterAttribute";
+    const string DontRegisterAttribute = "DontRegisterAttribute";
 
     /// <summary>
-    /// Interfaces that qualify a type for discovery.
-    /// Types implementing any of these interfaces will be included in the generated list.
+    /// Interfaces that qualify a type for discovery. Types implementing any of these will be included.
+    /// IPreProcessor/IPostProcessor included for AOT (open generics can't be closed at runtime).
     /// </summary>
-    private static readonly ImmutableHashSet<string> DiscoverableInterfaces = ImmutableHashSet.Create(
+    static readonly ImmutableHashSet<string> DiscoverableInterfaces = ImmutableHashSet.Create(
+        StringComparer.Ordinal,
         "FastEndpoints.IEndpoint",
         "FastEndpoints.IEventHandler",
         "FastEndpoints.ICommandHandler",
@@ -41,24 +43,22 @@ public sealed class DiscoveredTypesGenerator : IIncrementalGenerator
     /// <inheritdoc />
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        // Create a provider that extracts assembly name
+        // Extract assembly name from compilation (thread-safe via pipeline)
         var assemblyNameProvider = context.CompilationProvider
-            .Select(static (compilation, _) => compilation.AssemblyName ?? "Assembly");
+            .Select(static (compilation, _) => compilation.AssemblyName ?? "Assembly")
+            .WithTrackingName("AssemblyName");
 
-        // Create a provider that discovers qualifying types
-        // WithTrackingName helps with debugging and IDE performance analysis
+        // Discover qualifying types with caching
         var typesProvider = context.SyntaxProvider
             .CreateSyntaxProvider(
                 predicate: IsCandidate,
-                transform: ExtractTypeInfo)
-            .Where(static result => result is not null)
+                transform: ExtractTypeName)
+            .Where(static typeName => typeName is not null)
             .WithTrackingName("DiscoveredTypes")
             .Collect();
 
-        // Combine assembly name with discovered types
+        // Combine and generate
         var combined = assemblyNameProvider.Combine(typesProvider);
-
-        // Register the source output
         context.RegisterSourceOutput(combined, GenerateSource!);
     }
 
@@ -68,81 +68,74 @@ public sealed class DiscoveredTypesGenerator : IIncrementalGenerator
 
     /// <summary>
     /// Fast syntactic filter - runs on every keystroke.
-    /// Only allows non-generic class declarations through for semantic analysis.
+    /// Only allows non-generic class declarations through to semantic analysis.
     /// </summary>
-    private static bool IsCandidate(SyntaxNode node, CancellationToken cancellationToken)
-    {
-        // Only process non-generic class declarations
-        return node is ClassDeclarationSyntax { TypeParameterList: null };
-    }
+    static bool IsCandidate(SyntaxNode node, CancellationToken _)
+        => node is ClassDeclarationSyntax { TypeParameterList: null };
 
     /// <summary>
-    /// Semantic transform - extracts type information for qualifying types.
+    /// Semantic transform - extracts fully qualified type name for qualifying types.
+    /// Returns null for types that don't qualify, enabling efficient filtering.
     /// </summary>
-    private static string? ExtractTypeInfo(GeneratorSyntaxContext context, CancellationToken cancellationToken)
+    static string? ExtractTypeName(GeneratorSyntaxContext context, CancellationToken cancellationToken)
     {
-        // Get the declared symbol for this syntax node
+        // Defensive null check for semantic model result
         if (context.SemanticModel.GetDeclaredSymbol(context.Node, cancellationToken) is not INamedTypeSymbol typeSymbol)
             return null;
 
-        // Filter out types that shouldn't be discovered
-        if (!IsDiscoverableType(typeSymbol))
+        // Filter out ineligible types early
+        if (!IsEligibleType(typeSymbol))
             return null;
 
-        // Check if the type implements any discoverable interface
+        // Check if type implements any discoverable interface
         if (!ImplementsDiscoverableInterface(typeSymbol))
             return null;
 
-        // Return the fully qualified type name
         return typeSymbol.ToDisplayString();
     }
 
     /// <summary>
-    /// Determines if a type should be considered for discovery.
+    /// Determines if a type is eligible for discovery.
+    /// Filters out abstract types, types without interfaces, and types with [DontRegister].
     /// </summary>
-    private static bool IsDiscoverableType(INamedTypeSymbol typeSymbol)
+    static bool IsEligibleType(INamedTypeSymbol typeSymbol)
     {
         // Must not be abstract
         if (typeSymbol.IsAbstract)
             return false;
 
-        // Must not be file-scoped (C# 11+) - these can't be referenced from generated code
-        if (typeSymbol.IsFileLocal)
+        // Must have at least one interface
+        if (typeSymbol.AllInterfaces.Length == 0)
             return false;
 
         // Must not have [DontRegister] attribute
-        if (HasDontRegisterAttribute(typeSymbol))
-            return false;
-
-        // Must implement at least one interface
-        if (typeSymbol.AllInterfaces.Length == 0)
+        if (HasAttribute(typeSymbol, DontRegisterAttribute))
             return false;
 
         return true;
     }
 
     /// <summary>
-    /// Checks if the type has the [DontRegister] attribute.
+    /// Checks if a type has a specific attribute by name.
     /// </summary>
-    private static bool HasDontRegisterAttribute(INamedTypeSymbol typeSymbol)
+    static bool HasAttribute(INamedTypeSymbol typeSymbol, string attributeName)
     {
         foreach (var attribute in typeSymbol.GetAttributes())
         {
-            if (attribute.AttributeClass?.Name == DontRegisterAttribute)
+            if (string.Equals(attribute.AttributeClass?.Name, attributeName, StringComparison.Ordinal))
                 return true;
         }
         return false;
     }
 
     /// <summary>
-    /// Checks if the type implements any of the discoverable interfaces.
+    /// Checks if a type implements any of the discoverable FastEndpoints interfaces.
     /// </summary>
-    private static bool ImplementsDiscoverableInterface(INamedTypeSymbol typeSymbol)
+    static bool ImplementsDiscoverableInterface(INamedTypeSymbol typeSymbol)
     {
         foreach (var iface in typeSymbol.AllInterfaces)
         {
-            var ifaceName = iface.ToDisplayString();
-            if (DiscoverableInterfaces.Contains(ifaceName))
+            if (DiscoverableInterfaces.Contains(iface.ToDisplayString()))
                 return true;
         }
         return false;
@@ -153,116 +146,71 @@ public sealed class DiscoveredTypesGenerator : IIncrementalGenerator
     #region Code Generation
 
     /// <summary>
-    /// Generates the DiscoveredTypes source file.
+    /// Generates the DiscoveredTypes.g.cs source file with AOT preservation.
     /// </summary>
-    private static void GenerateSource(
-        SourceProductionContext context,
-        (string AssemblyName, ImmutableArray<string?> Types) data)
+    static void GenerateSource(SourceProductionContext context, (string AssemblyName, ImmutableArray<string?> Types) data)
     {
-        var (assemblyName, types) = data;
-
-        // Get distinct, sorted type names (excluding nulls)
-        var distinctTypes = types
-            .Where(t => t is not null)
+        // Deduplicate and sort for deterministic output
+        var types = data.Types
+            .Where(static t => t is not null)
             .Cast<string>()
-            .Distinct()
-            .OrderBy(t => t)
+            .Distinct(StringComparer.Ordinal)
+            .OrderBy(static t => t, StringComparer.Ordinal)
             .ToImmutableArray();
 
-        // Always generate the file, even if empty (provides a stable API)
-        var source = GenerateDiscoveredTypesClass(assemblyName, distinctTypes);
-        context.AddSource("DiscoveredTypes.g.cs", SourceText.From(source, Encoding.UTF8));
-    }
+        // No types discovered - skip generation
+        if (types.Length == 0)
+            return;
 
-    // Assembly info for GeneratedCode attribute
-    private static readonly string GeneratorName = typeof(DiscoveredTypesGenerator).FullName ?? "FastEndpoints.Generator.DiscoveredTypesGenerator";
-    private static readonly string GeneratorVersion = typeof(DiscoveredTypesGenerator).Assembly.GetName().Version?.ToString() ?? "1.0.0";
-
-    /// <summary>
-    /// Generates the DiscoveredTypes class source code.
-    /// </summary>
-    private static string GenerateDiscoveredTypesClass(string assemblyName, ImmutableArray<string> types)
-    {
-        var builder = new StringBuilder(4096);
-
-        // Auto-generated file header
-        builder.AppendLine("//------------------------------------------------------------------------------");
-        builder.AppendLine("// <auto-generated>");
-        builder.AppendLine("//     This code was generated by FastEndpoints.Generator.");
-        builder.AppendLine("//");
-        builder.AppendLine("//     Changes to this file may cause incorrect behavior and will be lost if");
-        builder.AppendLine("//     the code is regenerated.");
-        builder.AppendLine("// </auto-generated>");
-        builder.AppendLine("//------------------------------------------------------------------------------");
-        builder.AppendLine("#pragma warning disable CS0618");
-        builder.AppendLine("#nullable enable");
-        builder.AppendLine();
-        builder.Append("namespace ").Append(assemblyName).AppendLine(";");
-        builder.AppendLine();
-        builder.AppendLine("using System;");
-        builder.AppendLine("using System.CodeDom.Compiler;");
-        builder.AppendLine("using System.Collections.Generic;");
-        builder.AppendLine("using System.Diagnostics.CodeAnalysis;");
-        builder.AppendLine();
-
-        // Class documentation
-        builder.AppendLine("/// <summary>");
-        builder.AppendLine("/// Auto-generated list of discovered FastEndpoints types.");
-        builder.AppendLine("/// The DynamicDependency attributes ensure AOT/trimming preserves method and constructor metadata.");
-        builder.AppendLine("/// </summary>");
-        builder.Append("[GeneratedCode(\"").Append(GeneratorName).Append("\", \"").Append(GeneratorVersion).AppendLine("\")]");
-        builder.AppendLine("public static class DiscoveredTypes");
-        builder.AppendLine("{");
-
-        // Generate a static method with DynamicDependency attributes for AOT support
-        // (DynamicDependency can only be applied to methods, constructors, or fields)
-        builder.AppendLine("    /// <summary>");
-        builder.AppendLine("    /// Ensures AOT/trimming preserves public methods and constructors of discovered types.");
-        builder.AppendLine("    /// This method exists solely to host the DynamicDependency attributes.");
-        builder.AppendLine("    /// </summary>");
-        foreach (var typeName in types)
-        {
-            // Skip malformed generic types (open generics that slipped through)
-            if (IsOpenGenericType(typeName))
-                continue;
-
-            builder.Append("    [DynamicDependency(DynamicallyAccessedMemberTypes.PublicMethods | DynamicallyAccessedMemberTypes.PublicConstructors, typeof(");
-            builder.Append(typeName);
-            builder.AppendLine("))]");
-        }
-        builder.AppendLine("    public static void EnsureAotPreservation() { }");
-        builder.AppendLine();
-
-        // Property documentation
-        builder.AppendLine("    /// <summary>");
-        builder.AppendLine("    /// All discovered endpoint, validator, event handler, and command handler types.");
-        builder.AppendLine("    /// Each type has its public methods and constructors preserved for AOT compatibility.");
-        builder.AppendLine("    /// </summary>");
-        builder.AppendLine("    public static readonly List<Type> All =");
-        builder.AppendLine("    [");
-
-        // Type list
-        foreach (var typeName in types)
-        {
-            builder.Append("        typeof(");
-            builder.Append(typeName);
-            builder.AppendLine("),");
-        }
-
-        builder.AppendLine("    ];");
-        builder.AppendLine("}");
-
-        return builder.ToString();
+        var sourceCode = GenerateDiscoveredTypesClass(data.AssemblyName, types);
+        context.AddSource("DiscoveredTypes.g.cs", SourceText.From(sourceCode, Encoding.UTF8));
     }
 
     /// <summary>
-    /// Checks if the type name represents an open generic type (e.g., "MyClass&lt;T&gt;" without concrete type arguments).
+    /// Generates the DiscoveredTypes class with the Preserve&lt;T&gt;() pattern for AOT.
     /// </summary>
-    private static bool IsOpenGenericType(string typeName)
+    static string GenerateDiscoveredTypesClass(string assemblyName, ImmutableArray<string> types)
     {
-        // Open generic types have '<' but don't end with '>' when displayed
-        // This catches cases like "MyClass<T" which are malformed
-        return typeName.Contains("<") && !typeName.EndsWith(">");
+        var preserveCalls = string.Join("\n", types.Select(t => $"        Preserve<{t}>(),"));
+
+        return $$"""
+            //------------------------------------------------------------------------------
+            // <auto-generated>
+            //     This code was generated by FastEndpoints.Generator.
+            //     Changes to this file may cause incorrect behavior and will be lost if
+            //     the code is regenerated.
+            // </auto-generated>
+            //------------------------------------------------------------------------------
+
+            #nullable enable
+            #pragma warning disable CS0618
+
+            namespace {{assemblyName}};
+
+            using System;
+            using System.Collections.Generic;
+            using System.Diagnostics.CodeAnalysis;
+
+            /// <summary>
+            /// Auto-discovered FastEndpoints types with AOT preservation.
+            /// </summary>
+            public static class DiscoveredTypes
+            {
+                /// <summary>
+                /// All discovered endpoint, validator, handler, and processor types.
+                /// </summary>
+                public static readonly List<Type> All =
+                [
+            {{preserveCalls}}
+                ];
+
+                /// <summary>
+                /// Instructs the AOT linker to preserve public constructors and methods on T.
+                /// </summary>
+                static Type Preserve<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors | DynamicallyAccessedMemberTypes.PublicMethods)] T>()
+                    => typeof(T);
+            }
+            """;
     }
 
     #endregion

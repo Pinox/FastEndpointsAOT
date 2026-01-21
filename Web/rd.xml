@@ -1,5 +1,10 @@
 <Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
     <Application>
-      
+        <!-- 
+            This file is kept for any custom application-specific trimming directives.
+            FastEndpoints AOT support requires source generator improvements to emit
+            endpoint metadata (Configure/HandleAsync detection) at compile time instead
+            of using GetMethods() reflection at runtime.
+        -->
     </Application>
 </Directives>

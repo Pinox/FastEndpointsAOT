@@ -1,13 +1,9 @@
 using sq.Hostings;
 using Web.Features.Docs;
 using Web.Hostings;
-using Web.Infrastructure;
 
 try
 {
-    // Ensure AOT trimmer preserves endpoint method metadata
-    AotEndpointPreserver.EnsureEndpointsPreserved();
-
     var bld = WebApplication.CreateBuilder(args);
 
     // services (keep order)
