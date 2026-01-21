@@ -92,6 +92,21 @@ public sealed class EndpointOptions
     /// </code>
     /// </summary>
     public Func<HttpContext, object?, Task>? GlobalResponseModifierAsync { internal get; set; }
+
+    /// <summary>
+    /// set to true to use source-generated command executors for AOT compatibility.
+    /// when enabled, FastEndpoints will automatically register pre-generated command executors
+    /// and enforce strict mode (throws if MakeGenericType would be used at runtime).
+    /// <para>
+    /// NOTE: This requires the FastEndpoints source generator to discover your command handlers at compile time.
+    /// </para>
+    /// </summary>
+    /// <example>
+    /// <code>
+    /// app.UseFastEndpoints(c => c.Endpoints.UseGeneratedCommandExecutors = true);
+    /// </code>
+    /// </example>
+    public bool UseGeneratedCommandExecutors { internal get; set; }
 }
 
 public struct EndpointNameGenerationContext(Type endpointType, string? httpVerb, int? routeNumber, string? tagPrefix)

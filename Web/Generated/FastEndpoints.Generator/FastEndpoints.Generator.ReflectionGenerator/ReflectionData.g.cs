@@ -14,6 +14,7 @@ using FastEndpoints;
 using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
 using System.Runtime.CompilerServices;
+using System.Diagnostics.CodeAnalysis;
 
 using t0 = Admin.Login.Request;
 using t1 = Binding.Multipart.UploadRequest;
@@ -119,6 +120,18 @@ namespace Web;
 [GeneratedCode("FastEndpoints.Generator.ReflectionGenerator", "7.3.0.0")]
 public static class GeneratedReflection
 {
+    /// <summary>
+    /// Module initializer that registers command executors with the CommandExecutorRegistry.
+    /// This runs automatically when the assembly loads, enabling auto-registration
+    /// when <c>UseGeneratedCommandExecutors = true</c> is set in UseFastEndpoints.
+    /// </summary>
+    [ModuleInitializer]
+    [DynamicDependency(DynamicallyAccessedMemberTypes.All, typeof(CommandExecutorRegistry))]
+    public static void RegisterCommandExecutorFactory()
+    {
+        CommandExecutorRegistry.Register(RegisterCommandExecutors);
+    }
+
     /// <summary>
     /// Register source generated reflection data from [Web] with the central cache.
     /// </summary>

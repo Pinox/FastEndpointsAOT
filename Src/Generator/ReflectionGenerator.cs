@@ -473,7 +473,7 @@ public sealed class ReflectionGenerator : IIncrementalGenerator
         var builder = new StringBuilder(8192);
 
         // Generate file header
-        GenerateFileHeader(builder, collector);
+        GenerateFileHeader(builder, collector, hasCommandHandlers: commandHandlers.Length > 0);
 
         // Generate namespace and class
         builder.Append("namespace ").Append(assemblyName).AppendLine(";");
@@ -484,6 +484,12 @@ public sealed class ReflectionGenerator : IIncrementalGenerator
         builder.Append("[GeneratedCode(\"").Append(GeneratorName).Append("\", \"").Append(GeneratorVersion).AppendLine("\")]");
         builder.AppendLine("public static class GeneratedReflection");
         builder.AppendLine("{");
+
+        // Generate module initializer to auto-register command executors
+        if (commandHandlers.Length > 0)
+        {
+            GenerateModuleInitializer(builder);
+        }
 
         // Generate AddFrom method
         GenerateAddFromMethod(builder, sanitizedAssemblyName, collector);
@@ -503,7 +509,7 @@ public sealed class ReflectionGenerator : IIncrementalGenerator
     /// <summary>
     /// Generates the file header with using directives and type aliases.
     /// </summary>
-    private static void GenerateFileHeader(StringBuilder builder, TypeCollector collector)
+    private static void GenerateFileHeader(StringBuilder builder, TypeCollector collector, bool hasCommandHandlers)
     {
         // Auto-generated file header
         builder.AppendLine("//------------------------------------------------------------------------------");
@@ -522,6 +528,10 @@ public sealed class ReflectionGenerator : IIncrementalGenerator
         builder.AppendLine("using Microsoft.Extensions.DependencyInjection;");
         builder.AppendLine("using System.Globalization;");
         builder.AppendLine("using System.Runtime.CompilerServices;");
+        if (hasCommandHandlers)
+        {
+            builder.AppendLine("using System.Diagnostics.CodeAnalysis;");
+        }
         builder.AppendLine();
 
         // Generate type aliases
@@ -650,6 +660,26 @@ public sealed class ReflectionGenerator : IIncrementalGenerator
         }
 
         builder.AppendLine("    }");
+    }
+
+    /// <summary>
+    /// Generates a module initializer that auto-registers command executors with CommandExecutorRegistry.
+    /// This enables the zero-ceremony API: app.UseFastEndpoints(c => c.Endpoints.UseGeneratedCommandExecutors = true)
+    /// </summary>
+    private static void GenerateModuleInitializer(StringBuilder builder)
+    {
+        builder.AppendLine("    /// <summary>");
+        builder.AppendLine("    /// Module initializer that registers command executors with the CommandExecutorRegistry.");
+        builder.AppendLine("    /// This runs automatically when the assembly loads, enabling auto-registration");
+        builder.AppendLine("    /// when <c>UseGeneratedCommandExecutors = true</c> is set in UseFastEndpoints.");
+        builder.AppendLine("    /// </summary>");
+        builder.AppendLine("    [ModuleInitializer]");
+        builder.AppendLine("    [DynamicDependency(DynamicallyAccessedMemberTypes.All, typeof(CommandExecutorRegistry))]");
+        builder.AppendLine("    public static void RegisterCommandExecutorFactory()");
+        builder.AppendLine("    {");
+        builder.AppendLine("        CommandExecutorRegistry.Register(RegisterCommandExecutors);");
+        builder.AppendLine("    }");
+        builder.AppendLine();
     }
 
     /// <summary>

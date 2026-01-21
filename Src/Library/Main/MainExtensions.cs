@@ -72,6 +72,21 @@ public static class MainExtensions
                                   : Cfg.SerOpts.Options;
         configAction?.Invoke(app.ServiceProvider.GetRequiredService<Cfg>());
 
+        // Register source-generated command executors if enabled
+        if (Cfg.EpOpts.UseGeneratedCommandExecutors)
+        {
+            if (!CommandExecutorRegistry.HasRegistrations)
+            {
+                throw new InvalidOperationException(
+                    "UseGeneratedCommandExecutors is enabled but no command executors were registered by the source generator. " +
+                    "Ensure the FastEndpoints source generator package is referenced and your command handlers are discoverable.");
+            }
+
+            var cmdRegistry = app.ServiceProvider.GetRequiredService<CommandHandlerRegistry>();
+            CommandExecutorRegistry.RegisterAll(cmdRegistry, app.ServiceProvider);
+            CommandExtensions.UsePreGeneratedExecutors = true;
+        }
+
         if (Cfg.ValOpts.UsePropertyNamingPolicy && Cfg.SerOpts.Options.PropertyNamingPolicy is not null)
         {
             ValidatorOptions.Global.PropertyNameResolver =

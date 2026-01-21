@@ -394,6 +394,10 @@ object? : response content which may be null```", null, null, null, null, false,
             the arguments for the func are:
             ```HttpContext : the http context of the current request/response
 object? : response content which may be null```", null, null, null, null, false, null, null, null));
+            cache.Add(@"P:FastEndpoints.EndpointOptions.UseGeneratedCommandExecutors", new XmlComment(@"set to true to use source-generated command executors for AOT compatibility.
+when enabled, FastEndpoints will automatically register pre-generated command executors
+and enforce strict mode (throws if MakeGenericType would be used at runtime).
+NOTE: This requires the FastEndpoints source generator to discover your command handlers at compile time.", null, null, null, null, false, [@"```app.UseFastEndpoints(c =&gt; c.Endpoints.UseGeneratedCommandExecutors = true);```"], null, null));
             cache.Add(@"T:FastEndpoints.ErrorOptions", new XmlComment(@"error response customization settings", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.ErrorOptions.StatusCode", new XmlComment(@"this http status code will be used for all automatically sent validation failure responses. defaults to 400.", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.ErrorOptions.ContentType", new XmlComment(@"the content-type header value for 400 error responses", null, null, null, null, false, null, null, null));
@@ -1030,6 +1034,10 @@ requirement such as using ""Startup.cs"", etc.", null, null, null, null, false, 
             cache.Add(@"M:FastEndpoints.RouteHandlerBuilderExtensions.ClearDefaultProduces(Microsoft.AspNetCore.Builder.RouteHandlerBuilder,System.Int32[])", new XmlComment(@"clears any number of given ""produces metadata"" from the endpoint by supplying the status codes of the responses to remove.
 not specifying any status codes will result in all produces metadata being removed.", null, null, null, null, false, null, [new XmlParameterComment(@"statusCodes", @"one or more status codes of the defaults to remove", null, false)], null));
             cache.Add(@"M:FastEndpoints.RouteHandlerBuilderExtensions.Accepts``1(Microsoft.AspNetCore.Builder.RouteHandlerBuilder)", new XmlComment(@"override the default ""accepts metadata"" in order to accept any content-type from the client.", null, null, null, null, false, null, null, null));
+            cache.Add(@"M:FastEndpoints.CommandExecutorRegistry.Register(System.Action{FastEndpoints.CommandHandlerRegistry,System.IServiceProvider})", new XmlComment(@"Registers a command executor factory that will be called when
+`Endpoints.UseGeneratedCommandExecutors` is enabled in UseFastEndpoints config.
+This is typically called by source-generated module initializers.", null, null, null, null, false, null, [new XmlParameterComment(@"registration", @"A delegate that registers command executors with the registry.", null, false)], null));
+            cache.Add(@"P:FastEndpoints.CommandExecutorRegistry.HasRegistrations", new XmlComment(@"Gets whether any command executor registrations have been registered by source generators.", null, null, null, null, false, null, null, null));
             cache.Add(@"T:FastEndpoints.CommandHandlerBase`1", new XmlComment(@"the base class from which all CommandHandler&lt;TCommand&gt; classes inherit from", null, null, null, null, false, null, null, null));
             cache.Add(@"T:FastEndpoints.CommandHandler`1", new XmlComment(@"inherit this base class if you'd like to manipulate validation state of the calling endpoint from within the command handler.", null, null, null, null, false, null, null, null));
             cache.Add(@"T:FastEndpoints.CommandHandler`2", new XmlComment(@"inherit this base class if you'd like to manipulate validation state of the calling endpoint from within the command handler.", null, null, null, null, false, null, null, null));
