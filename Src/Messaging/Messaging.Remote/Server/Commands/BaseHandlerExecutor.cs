@@ -1,4 +1,5 @@
-﻿using Grpc.AspNetCore.Server.Model;
+﻿using System.Diagnostics.CodeAnalysis;
+using Grpc.AspNetCore.Server.Model;
 using Grpc.Core;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
@@ -51,6 +52,7 @@ abstract class BaseHandlerExecutor<TCommand, THandler, TResult, TSelf> : IMethod
         AddMethodToCtx(ctx, method, metadata);
     }
 
+    [DynamicDependency("ExecuteAsync", typeof(ICommandHandler<,>))]
     static object[]? HandlerExecMethodAttributes(Type tExecutor)
     {
         var tHandler = tExecutor.GenericTypeArguments[1];
