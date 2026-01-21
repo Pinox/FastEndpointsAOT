@@ -47,6 +47,12 @@ public static class EventExtensions
     [DynamicDependency(DynamicallyAccessedMemberTypes.PublicMethods, typeof(EventBus<>))]
     public static Task PublishAsync(this IEvent eventModel, Mode waitMode = Mode.WaitForAll, CancellationToken cancellation = default)
     {
+        // Try source-generated AOT-compatible publisher first
+        var publisher = EventPublisherRegistry.GetPublisher(eventModel.GetType());
+        if (publisher is not null)
+            return publisher(eventModel, waitMode, cancellation);
+
+        // Fallback to runtime-generated publisher (non-AOT path)
         var publishFunc = _publishFuncCache.GetOrAdd(eventModel.GetType(), PublishAsyncFuncFactory);
 
         return publishFunc(eventModel, waitMode, cancellation);
