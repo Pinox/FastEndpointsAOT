@@ -98,6 +98,8 @@ static class BinderExtensions
 
     static readonly ConstructorInfo _parseResultCtor = Types.ParseResult.GetConstructor([Types.Bool, Types.Object])!;
 
+    // Preserve ParseResult constructor for AOT compatibility (used in expression compilation)
+    [DynamicDependency(DynamicallyAccessedMemberTypes.PublicConstructors, typeof(ParseResult))]
     // Preserve TryParse methods for primitive types used in model binding (AOT compatibility)
     [DynamicDependency("TryParse", typeof(int))]
     [DynamicDependency("TryParse", typeof(long))]
@@ -168,8 +170,10 @@ static class BinderExtensions
             // The 'StringValues' parameter passed into our delegate
             var inputParameter = Expression.Parameter(Types.StringValues, "input");
 
-            // (string)input
-            var castToString = Expression.Convert(inputParameter, Types.String);
+            // Call input.ToString() instead of (string)input for AOT compatibility
+            // StringValues has an implicit conversion to string, but that doesn't work in AOT
+            var toStringMethod = Types.StringValues.GetMethod("ToString", Type.EmptyTypes)!;
+            var inputAsString = Expression.Call(inputParameter, toStringMethod);
 
             // 'res' variable used as the out parameter to the TryParse call
             var resultVar = Expression.Variable(type, "res");
@@ -178,16 +182,16 @@ static class BinderExtensions
             var isSuccessVar = Expression.Variable(Types.Bool, "isSuccess");
 
             // To finish off, we need to following sequence of statements:
-            //  - isSuccess = TryParse((string)input, res)
+            //  - isSuccess = TryParse(input.ToString(), res)
             //  - new ParseResult(isSuccess, (object)res)
             // A sequence of statements is done using a block, and the result of the final statement is the result of the block
             var tryParseCall = isIParseable
                                    ? Expression.Call(
                                        tryParseMethod,
-                                       castToString,
+                                       inputAsString,
                                        Expression.Constant(null, CultureInfo.InvariantCulture.GetType()),
                                        resultVar)
-                                   : Expression.Call(tryParseMethod, castToString, resultVar);
+                                   : Expression.Call(tryParseMethod, inputAsString, resultVar);
 
             var block = Expression.Block(
                 [resultVar, isSuccessVar],
