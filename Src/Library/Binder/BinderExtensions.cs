@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -97,6 +98,25 @@ static class BinderExtensions
 
     static readonly ConstructorInfo _parseResultCtor = Types.ParseResult.GetConstructor([Types.Bool, Types.Object])!;
 
+    // Preserve TryParse methods for primitive types used in model binding (AOT compatibility)
+    [DynamicDependency("TryParse", typeof(int))]
+    [DynamicDependency("TryParse", typeof(long))]
+    [DynamicDependency("TryParse", typeof(short))]
+    [DynamicDependency("TryParse", typeof(byte))]
+    [DynamicDependency("TryParse", typeof(sbyte))]
+    [DynamicDependency("TryParse", typeof(uint))]
+    [DynamicDependency("TryParse", typeof(ulong))]
+    [DynamicDependency("TryParse", typeof(ushort))]
+    [DynamicDependency("TryParse", typeof(float))]
+    [DynamicDependency("TryParse", typeof(double))]
+    [DynamicDependency("TryParse", typeof(decimal))]
+    [DynamicDependency("TryParse", typeof(bool))]
+    [DynamicDependency("TryParse", typeof(DateTime))]
+    [DynamicDependency("TryParse", typeof(DateTimeOffset))]
+    [DynamicDependency("TryParse", typeof(TimeSpan))]
+    [DynamicDependency("TryParse", typeof(DateOnly))]
+    [DynamicDependency("TryParse", typeof(TimeOnly))]
+    [DynamicDependency("TryParse", typeof(Guid))]
     internal static Func<StringValues, ParseResult> ValueParser(this Type type)
     {
         //user may have already registered a parser func for a given type via config at startup.
