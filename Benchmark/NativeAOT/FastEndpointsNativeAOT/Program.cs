@@ -21,6 +21,9 @@ app.UseFastEndpoints(
     {
         c.Binding.ReflectionCache.AddFromFastEndpointsNativeAOT();
         c.Serializer.Options.TypeInfoResolverChain.Add(BenchSerializerContext.Default);
+        
+        // Safe to enable even without command handlers - strict mode only activates if commands exist
+        c.Endpoints.UseGeneratedCommandExecutors = true;
     });
 app.Run();
 

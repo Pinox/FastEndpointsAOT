@@ -80,10 +80,13 @@ public static class MainExtensions
             {
                 var cmdRegistry = app.ServiceProvider.GetRequiredService<CommandHandlerRegistry>();
                 CommandExecutorRegistry.RegisterAll(cmdRegistry, app.ServiceProvider);
-            }
 
-            // Enable strict mode - will throw if MakeGenericType would be used at runtime
-            CommandExtensions.UsePreGeneratedExecutors = true;
+                // Enable strict mode only if we have registrations
+                // This ensures AOT safety when commands are actually being used
+                CommandExtensions.UsePreGeneratedExecutors = true;
+            }
+            // If no registrations, don't enable strict mode - allows the setting to be
+            // safely enabled in projects without command handlers
         }
 
         if (Cfg.ValOpts.UsePropertyNamingPolicy && Cfg.SerOpts.Options.PropertyNamingPolicy is not null)
