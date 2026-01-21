@@ -30,17 +30,13 @@ internal sealed class AotResponseBufferingMiddleware
     public AotResponseBufferingMiddleware(RequestDelegate next)
     {
         _next = next;
-        Console.WriteLine("[DEBUG] AotResponseBufferingMiddleware constructor called");
     }
 
     public async Task Invoke(HttpContext context)
     {
-        Console.WriteLine($"[DEBUG] AotResponseBufferingMiddleware.Invoke called for {context.Request.Method} {context.Request.Path}");
-
         var originalBodyFeature = context.Features.Get<IHttpResponseBodyFeature>();
         if (originalBodyFeature is null)
         {
-            Console.WriteLine("[DEBUG] No IHttpResponseBodyFeature found, skipping buffering");
             await _next(context);
             return;
         }
@@ -51,25 +47,16 @@ internal sealed class AotResponseBufferingMiddleware
 
         try
         {
-            Console.WriteLine("[DEBUG] Calling next middleware...");
             await _next(context);
-            Console.WriteLine("[DEBUG] Next middleware completed successfully");
         }
         catch (NotSupportedException ex) when (IsVoidTaskResultException(ex) && ShouldSuppressException(context, buffer))
         {
-            Console.WriteLine($"[DEBUG] Caught and suppressing VoidTaskResult exception: {ex.Message}");
             // Suppress the VoidTaskResult serialization exception.
             // The response was already written successfully to the buffer.
             // We only suppress when the response appears successful (2xx or redirects).
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"[DEBUG] Unexpected exception in middleware: {ex.Message}");
-            throw;
-        }
         finally
         {
-            Console.WriteLine($"[DEBUG] Processing response buffer (length: {buffer.Length})");
             buffer.Position = 0;
             context.Features.Set(originalBodyFeature);
 
@@ -105,7 +92,6 @@ internal sealed class AotResponseBufferingMiddleware
 
             if (canWriteBody)
             {
-                Console.WriteLine($"[DEBUG] Writing {outputBuffer.Length} bytes to response stream");
                 outputBuffer.Position = 0;
                 await outputBuffer.CopyToAsync(originalBodyFeature.Stream, context.RequestAborted);
             }
@@ -115,7 +101,6 @@ internal sealed class AotResponseBufferingMiddleware
             {
                 await outputBuffer.DisposeAsync();
             }
-            Console.WriteLine("[DEBUG] Response processing completed");
         }
     }
 
@@ -177,8 +162,6 @@ internal sealed class AotResponseBufferingMiddleware
         if (signatureIndex <= 0)
             return buffer; // No Task JSON suffix found, or it's at the start (unlikely)
 
-        Console.WriteLine($"[DEBUG] Found Task JSON suffix at position {signatureIndex}, stripping...");
-        
         // Create a new buffer with only the content before the Task JSON
         var cleanBuffer = new MemoryStream();
         cleanBuffer.Write(data, 0, signatureIndex);

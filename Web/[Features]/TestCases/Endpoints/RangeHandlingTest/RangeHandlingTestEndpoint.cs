@@ -10,7 +10,7 @@ public class Endpoint : EndpointWithoutRequest
     {
         Get(AppRoutes.testcases_range);
         AllowAnonymous();
-        Description(b => b.Accepts<Request>());
+        Options(o => o.Produces<string>(206, "text/plain"));
     }
 
     public override Task HandleAsync(CancellationToken ct)

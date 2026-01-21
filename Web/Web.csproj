@@ -61,14 +61,6 @@
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
     </ItemGroup>
 
-  <!-- Exclude test cases with issues unrelated to our changes, but keep CommandHandler/CommandBus tests -->
-  <ItemGroup>
-    <Compile Remove="[Features]\TestCases\**\*.cs" />
-    <!-- Re-include only Messaging folder for command handler tests -->
-    <Compile Include="[Features]\TestCases\Messaging\CommandHandlerTest\**\*.cs" />
-    <Compile Include="[Features]\TestCases\Messaging\CommandBusTest\**\*.cs" />
-  </ItemGroup>
-
   <!-- Exclude legacy docs hosting and processors under Hostings -->
   <ItemGroup>
     <Compile Remove="Hostings\Processors\**\*.cs" />

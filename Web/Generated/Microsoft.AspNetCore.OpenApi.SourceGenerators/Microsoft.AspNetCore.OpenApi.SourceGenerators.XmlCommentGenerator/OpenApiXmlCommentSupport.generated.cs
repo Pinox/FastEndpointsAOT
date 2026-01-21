@@ -171,7 +171,8 @@ annotated.", null, null, null, null, false, null, [new XmlParameterComment(@"hea
             cache.Add(@"M:FastEndpoints.ToHeaderAttribute.#ctor(System.String)", new XmlComment(@"response dto properties marked with this attribute will cause an automatic response header to be added to the http response with the value from the property  that is
 annotated.", null, null, null, null, false, null, [new XmlParameterComment(@"headerName", @"a custom name for the header. if not supplied, the property name will be used.", null, false)], null));
             cache.Add(@"P:FastEndpoints.ToHeaderAttribute.HeaderName", new XmlComment(@"a custom name for the header. if not supplied, the property name will be used.", null, null, null, null, false, null, null, null));
-            cache.Add(@"T:FastEndpoints.ParseResult", new XmlComment(@"dto used to hold the result of a value parsing operation", null, null, null, null, false, null, null, null));
+            cache.Add(@"T:FastEndpoints.ParseResult", new XmlComment(@"dto used to hold the result of a value parsing operation.
+Note: This is a class (not struct) for Native AOT compatibility.", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.ParseResult.IsSuccess", new XmlComment(@"will be true if the parsing operation was a success", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.ParseResult.Value", new XmlComment(@"will hold the parsed value if the parsing was successful", null, null, null, null, false, null, null, null));
             cache.Add(@"M:FastEndpoints.ParseResult.#ctor(System.Boolean,System.Object)", new XmlComment(@"constructor for initializing a ParseResult instance", null, null, null, null, false, null, [new XmlParameterComment(@"isSuccess", @"set to true of parsing was successful", null, false), new XmlParameterComment(@"value", @"set the value that was obtained from the parsing operation", null, false)], null));
@@ -240,7 +241,8 @@ instance by utilizing an internal concurrent/thread-safe cache.", null, null, nu
             cache.Add(@"P:FastEndpoints.UserPrivileges.Roles", new XmlComment(@"roles of the user", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.UserPrivileges.Permissions", new XmlComment(@"allowed permissions for the user", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.UserPrivileges.Item(System.String)", new XmlComment(@"shortcut for adding a new Claim to the claim list for the given claim type and value", null, null, null, null, false, null, [new XmlParameterComment(@"claimType", @"the claim type to add", null, false)], null));
-            cache.Add(@"T:FastEndpoints.BinderContext", new XmlComment(@"binder context supplied to custom request binders.", null, null, null, null, false, null, null, null));
+            cache.Add(@"T:FastEndpoints.BinderContext", new XmlComment(@"binder context supplied to custom request binders.
+Note: This is a class (not struct) for Native AOT compatibility.", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.BinderContext.HttpContext", new XmlComment(@"the http context of the current request", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.BinderContext.ValidationFailures", new XmlComment(@"a list of validation failures for the endpoint. you can add your own validation failures for properties of the request dto using this property.", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.BinderContext.SerializerOptions", new XmlComment(@"the configured json serializer options of the app, which was specified at app startup.", null, null, null, null, false, null, null, null));
@@ -474,7 +476,10 @@ if string? VersioningOptions.RouteTemplate is specified, that will take preceden
 Note: This is a class (not struct) for Native AOT compatibility.
 Value types don't work with generic services in Native AOT.", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.EmptyRequest._dummy", new XmlComment(@"Dummy property required by FastEndpoints request binder (DTOs must have at least one property)", null, null, null, null, false, null, null, null));
-            cache.Add(@"T:FastEndpoints.EmptyResponse", new XmlComment(@"a response dto that doesn't have any properties", null, null, null, null, false, null, null, null));
+            cache.Add(@"T:FastEndpoints.EmptyResponse", new XmlComment(@"a response dto that doesn't have any properties.
+Note: This is a class (not struct) for Native AOT compatibility.
+Value types used as generic type arguments can cause issues in Native AOT.", null, null, null, null, false, null, null, null));
+            cache.Add(@"P:FastEndpoints.EmptyResponse._dummy", new XmlComment(@"Dummy property for serialization compatibility", null, null, null, null, false, null, null, null));
             cache.Add(@"T:FastEndpoints.ErrorResponse", new XmlComment(@"the dto used to send an error response to the client", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.ErrorResponse.StatusCode", new XmlComment(@"the http status code sent to the client. default is 400.", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.ErrorResponse.Message", new XmlComment(@"the message for the error response", null, null, null, null, false, null, null, null));
@@ -482,8 +487,10 @@ Value types don't work with generic services in Native AOT.", null, null, null, 
             cache.Add(@"M:FastEndpoints.ErrorResponse.#ctor", new XmlComment(@"instantiate a new error response without any errors", null, null, null, null, false, null, null, null));
             cache.Add(@"M:FastEndpoints.ErrorResponse.#ctor(System.Collections.Generic.List{FluentValidation.Results.ValidationFailure},System.Int32)", new XmlComment(@"instantiate an error response with the given collection validation failures", null, null, null, null, false, null, [new XmlParameterComment(@"failures", @"validation failures to initialize the DTO with", null, false)], null));
             cache.Add(@"M:FastEndpoints.ErrorResponse.PopulateMetadata(System.Reflection.MethodInfo,Microsoft.AspNetCore.Builder.EndpointBuilder)", new XmlComment(null, null, null, null, null, false, null, null, null));
-            cache.Add(@"T:FastEndpoints.MultipartSection", new XmlComment(@"represents a multipart form section which could contain either a FormMultipartSection or a FileMultipartSection", null, null, null, null, false, null, [new XmlParameterComment(@"form", @"", null, false), new XmlParameterComment(@"file", @"", null, false)], null));
-            cache.Add(@"M:FastEndpoints.MultipartSection.#ctor(Microsoft.AspNetCore.WebUtilities.FormMultipartSection,Microsoft.AspNetCore.WebUtilities.FileMultipartSection)", new XmlComment(@"represents a multipart form section which could contain either a FormMultipartSection or a FileMultipartSection", null, null, null, null, false, null, [new XmlParameterComment(@"form", @"", null, false), new XmlParameterComment(@"file", @"", null, false)], null));
+            cache.Add(@"T:FastEndpoints.MultipartSection", new XmlComment(@"represents a multipart form section which could contain either a FormMultipartSection or a FileMultipartSection.
+Note: This is a class (not struct) for Native AOT compatibility.", null, null, null, null, false, null, [new XmlParameterComment(@"form", @"", null, false), new XmlParameterComment(@"file", @"", null, false)], null));
+            cache.Add(@"M:FastEndpoints.MultipartSection.#ctor(Microsoft.AspNetCore.WebUtilities.FormMultipartSection,Microsoft.AspNetCore.WebUtilities.FileMultipartSection)", new XmlComment(@"represents a multipart form section which could contain either a FormMultipartSection or a FileMultipartSection.
+Note: This is a class (not struct) for Native AOT compatibility.", null, null, null, null, false, null, [new XmlParameterComment(@"form", @"", null, false), new XmlParameterComment(@"file", @"", null, false)], null));
             cache.Add(@"T:FastEndpoints.InternalErrorResponse", new XmlComment(@"the dto used to send an error response to the client when an unhandled exception occurs on the server", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.InternalErrorResponse.Status", new XmlComment(@"error status", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.InternalErrorResponse.Code", new XmlComment(@"http status code of the error response", null, null, null, null, false, null, null, null));
@@ -696,10 +703,12 @@ HINT: entity mappers are singletons for performance reasons. do not maintain sta
             cache.Add(@"P:FastEndpoints.IResponseSender.HttpContext", new XmlComment(@"the http context of the current request", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.IResponseSender.ValidationFailures", new XmlComment(@"validation failures collection for the endpoint", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.IResponseSender.Definition", new XmlComment(@"gets the endpoint definition which contains all the configuration info for the endpoint", null, null, null, null, false, null, null, null));
-            cache.Add(@"T:FastEndpoints.ResponseSender`2", new XmlComment(@"this struct encapsulates the default response sending methods for endpoints.
-you can add your own custom send methods by writing extension methods targeting IResponseSender interface.", null, null, null, null, false, null, null, null));
-            cache.Add(@"M:FastEndpoints.ResponseSender`2.#ctor(FastEndpoints.Endpoint{`0,`1})", new XmlComment(@"this struct encapsulates the default response sending methods for endpoints.
-you can add your own custom send methods by writing extension methods targeting IResponseSender interface.", null, null, null, null, false, null, null, null));
+            cache.Add(@"T:FastEndpoints.ResponseSender`2", new XmlComment(@"this class encapsulates the default response sending methods for endpoints.
+you can add your own custom send methods by writing extension methods targeting IResponseSender interface.
+Note: This is a class (not struct) for Native AOT compatibility.", null, null, null, null, false, null, null, null));
+            cache.Add(@"M:FastEndpoints.ResponseSender`2.#ctor(FastEndpoints.Endpoint{`0,`1})", new XmlComment(@"this class encapsulates the default response sending methods for endpoints.
+you can add your own custom send methods by writing extension methods targeting IResponseSender interface.
+Note: This is a class (not struct) for Native AOT compatibility.", null, null, null, null, false, null, null, null));
             cache.Add(@"M:FastEndpoints.ResponseSender`2.AcceptedAtAsync``1(System.Object,`1,System.Nullable{FastEndpoints.Http},System.Nullable{System.Int32},System.Boolean,System.Threading.CancellationToken)", new XmlComment(@"            send a 202 accepted response with a location header containing where the resource can be retrieved from.
             HINT: if pointing to an endpoint with multiple verbs, make sure to specify the 'verb' argument and if pointing to a multi route endpoint,
 specify the 'routeNumber' argument.WARNING: this overload will not add a location header if you've set a custom endpoint name using .WithName() method. use the other overload
@@ -1285,7 +1294,8 @@ provider, which will prevent the job from being picked up for execution.", null,
             cache.Add(@"M:FastEndpoints.JobTracker`1.StoreJobResultAsync``1(System.Guid,``0,System.Threading.CancellationToken)", new XmlComment(@"this method can be used to either store a preliminary job result and/or job progress before the job execution fully completes.", null, null, null, null, false, null, [new XmlParameterComment(@"trackingId", @"the job tracking id", null, false), new XmlParameterComment(@"result", @"the preliminary job result or progress to store", null, false), new XmlParameterComment(@"ct", @"cancellation token", null, false)], null));
             cache.Add(@"M:FastEndpoints.JobTracker`1.GetJobResultAsync``1(System.Guid,System.Threading.CancellationToken)", new XmlComment(@"retrieve the result of a command (that returns a result) which was previously queued as a job.
 the returned result will be null/default until the job is actually complete.", null, null, null, null, false, null, [new XmlParameterComment(@"trackingId", @"the job tracking id", null, false), new XmlParameterComment(@"ct", @"cancellation token", null, false)], null));
-            cache.Add(@"T:FastEndpoints.PendingJobSearchParams`1", new XmlComment(@"a dto representing search parameters for pending job storage record retrieval", null, null, null, null, false, null, null, null));
+            cache.Add(@"T:FastEndpoints.PendingJobSearchParams`1", new XmlComment(@"a dto representing search parameters for pending job storage record retrieval.
+Note: This is a class (not struct) for Native AOT compatibility.", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.PendingJobSearchParams`1.QueueID", new XmlComment(@"the ID of the job queue for fetching the next batch of records for.", null, null, null, null, false, null, null, null));
             cache.Add(@"P:FastEndpoints.PendingJobSearchParams`1.Match", new XmlComment(@"       a boolean lambda expression to match the next batch of records
        ```r =&gt; r.QueueID == ""xxx"" &amp;&amp;
@@ -1707,6 +1717,20 @@ Only overrides properties that need [From], etc.", null, null, null, null, false
             cache.Add(@"P:Domain.Customers.Create.Request.cID", new XmlComment(@"Route parameter for customer ID (bound from route /customer/{cID}/new/{SourceID})", null, null, null, null, false, null, null, null));
             cache.Add(@"P:Domain.Sales.Orders.Create.Request.GuidTest", new XmlComment(@"this is a guid property description", null, null, null, null, false, null, null, null));
             cache.Add(@"P:Domain.Sales.Orders.Retrieve.Request.TenantID", new XmlComment(@"this is the tenant id", null, null, null, null, false, null, null, null));
+            cache.Add(@"P:TestCases.DupeParamBindingForIEnumerableProps.Request.Dates", new XmlComment(null, null, null, null, null, false, [@"[""2020-10-10""]"], null, null));
+            cache.Add(@"P:TestCases.FromBodyJsonBinding.Product.Id", new XmlComment(@"product id goes here", null, null, null, null, false, null, null, null));
+            cache.Add(@"P:TestCases.FromBodyJsonBinding.Product.Name", new XmlComment(@"this is the name of the product", null, null, null, null, false, null, null, null));
+            cache.Add(@"P:TestCases.FromBodyJsonBinding.Product.Price", new XmlComment(@"product price goes here", null, null, null, null, false, null, null, null));
+            cache.Add(@"P:TestCases.JsonArrayBindingForIEnumerableProps.Request.Dates", new XmlComment(null, null, null, null, null, false, [@"[""2020-10-10""]"], null, null));
+            cache.Add(@"P:TestCases.QueryObjectBindingTest.Request.String", new XmlComment(@"this is a string prop xml comment", null, null, null, null, false, null, null, null));
+            cache.Add(@"P:TestCases.QueryParamBindingInEpWithoutReq.Response.OtherID", new XmlComment(@"optional other id", null, null, null, null, false, null, null, null));
+            cache.Add(@"P:TestCases.RouteBindingInEpWithoutReq.Response.OtherID", new XmlComment(@"optional other id", null, null, null, null, false, null, null, null));
+            cache.Add(@"P:TestCases.RouteBindingTest.Request.String", new XmlComment(@"this is a string prop xml comment", null, null, null, null, false, null, null, null));
+            cache.Add(@"P:TestCases.RouteBindingTest.Request.FromBody", new XmlComment(@"frm body xml comment", null, null, null, null, false, null, null, null));
+            cache.Add(@"P:TestCases.PlainTextRequestTest.Request.Id", new XmlComment(@"id of the plain text request", null, null, null, null, false, null, null, null));
+            cache.Add(@"P:TestCases.GlobalRoutePrefixOverrideTest.Request.Id", new XmlComment(@"id of the plain text request", null, null, null, null, false, null, null, null));
+            cache.Add(@"P:TestCases.RateLimitTests.Response.OtherID", new XmlComment(@"optional other id", null, null, null, null, false, null, null, null));
+            cache.Add(@"P:TestCases.DataAnnotationCompliant.Request.Id", new XmlComment(@"id of the plain text request", null, null, null, null, false, null, null, null));
             cache.Add(@"M:Web.Hostings.CoreHosting.UseAotResponseBuffering(Microsoft.AspNetCore.Builder.IApplicationBuilder)", new XmlComment(@"Adds the AOT response buffering middleware that catches VoidTaskResult serialization exceptions.
 This must be registered early in the pipeline, before FastEndpoints.", null, null, null, null, false, null, null, null));
             cache.Add(@"M:Domain.Inventory.List.Recent.Endpoint.HandleAsync(System.Threading.CancellationToken)", new XmlComment(@"Handles the retrieval of recent inventory items for a specified category.", null, @"This endpoint is protected and requires the requesting user to have either the Admin or TestRole role.
@@ -2235,7 +2259,7 @@ Additionally, the AdminOnly policy must be satisfied.", @"A task that represents
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.AspNetCore.OpenApi.SourceGenerators, Version=10.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60", "10.0.2.0")]
     file static class GeneratedServiceCollectionExtensions
     {
-        [global::System.Runtime.CompilerServices.InterceptsLocationAttribute(1, "mE6iAqme8bc9ZHydTRT7Tr8BAABEb2NzRmVhdHVyZS5jcw==")]
+        [global::System.Runtime.CompilerServices.InterceptsLocationAttribute(1, "nSQFUq3APaeVurlQGldr7c8BAABEb2NzRmVhdHVyZS5jcw==")]
         public static IServiceCollection AddOpenApi(this IServiceCollection services, string documentName, Action<OpenApiOptions> configureOptions)
         {
             // This overload is not intercepted.

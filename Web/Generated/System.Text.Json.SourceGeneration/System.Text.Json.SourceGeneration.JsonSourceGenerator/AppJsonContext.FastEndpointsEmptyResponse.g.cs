@@ -46,7 +46,27 @@ namespace Web.Serialization
 
         private static global::System.Text.Json.Serialization.Metadata.JsonPropertyInfo[] FastEndpointsEmptyResponsePropInit(global::System.Text.Json.JsonSerializerOptions options)
         {
-            var properties = new global::System.Text.Json.Serialization.Metadata.JsonPropertyInfo[0];
+            var properties = new global::System.Text.Json.Serialization.Metadata.JsonPropertyInfo[1];
+
+            var info0 = new global::System.Text.Json.Serialization.Metadata.JsonPropertyInfoValues<byte>
+            {
+                IsProperty = true,
+                IsPublic = true,
+                IsVirtual = false,
+                DeclaringType = typeof(global::FastEndpoints.EmptyResponse),
+                Converter = null,
+                Getter = static obj => ((global::FastEndpoints.EmptyResponse)obj)._dummy,
+                Setter = static (obj, value) => ((global::FastEndpoints.EmptyResponse)obj)._dummy = value!,
+                IgnoreCondition = null,
+                HasJsonInclude = false,
+                IsExtensionData = false,
+                NumberHandling = null,
+                PropertyName = "_dummy",
+                JsonPropertyName = null,
+                AttributeProviderFactory = static () => typeof(global::FastEndpoints.EmptyResponse).GetProperty("_dummy", InstanceMemberBindingFlags, null, typeof(byte), global::System.Array.Empty<global::System.Type>(), null),
+            };
+            
+            properties[0] = global::System.Text.Json.Serialization.Metadata.JsonMetadataServices.CreatePropertyInfo<byte>(options, info0);
 
             return properties;
         }

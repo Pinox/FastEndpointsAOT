@@ -1,6 +1,6 @@
 ﻿namespace TestCases.MapperTest;
 
-public class Endpoint : Endpoint<Request, Response>
+public class Endpoint : Endpoint<Request, Response, Mapper>
 {
     readonly ILogger _logger;
 

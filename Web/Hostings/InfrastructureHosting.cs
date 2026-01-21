@@ -1,4 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
+using TestCases.KeyedServicesTests;
+using TestCases.UnitTestConcurrencyTest;
+using Web;
 using Web.Infrastructure;
 using Web.Services;
 
@@ -10,6 +13,17 @@ public static class InfrastructureHosting
     {
         services.AddScoped<IEmailService, EmailService>();
         services.AddAntiforgery();
+        
+        // Source-generated service registrations for [RegisterService<T>] attributes
+        services.RegisterServicesFromWeb();
+        
+        // Keyed services for TestCases.KeyedServicesTests
+        services.AddKeyedTransient<IKeyedService>("AAA", (_, _) => new MyKeyedService("AAA"));
+        services.AddKeyedTransient<IKeyedService>("BBB", (_, _) => new MyKeyedService("BBB"));
+        
+        // Singleton for TestCases.UnitTestConcurrencyTest
+        services.AddSingleton(new SingltonSVC(0));
+        
         return services;
     }
 

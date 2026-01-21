@@ -1,11 +1,11 @@
 ﻿namespace TestCases.KeyedServicesTests;
 
-interface IKeyedService
+public interface IKeyedService
 {
     string KeyName { get; init; }
 }
 
-sealed class MyKeyedService(string keyName) : IKeyedService
+public sealed class MyKeyedService(string keyName) : IKeyedService
 {
     public string KeyName { get; init; } = keyName;
 }

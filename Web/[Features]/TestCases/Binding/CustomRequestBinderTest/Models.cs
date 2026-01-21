@@ -24,10 +24,9 @@ public class Binder : RequestBinder<Request>
         {
             Id = ctx.HttpContext.Request.RouteValues["id"]?.ToString()!,
             CustomerID = ctx.HttpContext.Request.Headers["CustomerID"].ToString()!,
-            // AOT/trim-safe deserialization using source-generated metadata
             Product = await JsonSerializer.DeserializeAsync(
                 ctx.HttpContext.Request.Body,
-                new AppJsonContext(ctx.SerializerOptions).Product,
+                AppJsonContext.Default.CustomRequestBinderProduct,
                 ct)
         };
 }

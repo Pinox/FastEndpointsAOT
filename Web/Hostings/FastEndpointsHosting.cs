@@ -1,6 +1,5 @@
 using Web;
 using Web.PipelineBehaviors.PreProcessors;
-using Web.Infrastructure;
 
 namespace sq.Hostings;
 
@@ -9,11 +8,6 @@ public static class FastEndpointsHosting
     // Services: Add FastEndpoints with source generator discovered types for AOT compatibility
     public static IServiceCollection AddFastEndpointsServices(this IServiceCollection services)
     {
-        // DEBUG: Analyze endpoint types before FastEndpoints processes them
-        Console.WriteLine("[DEBUG] About to analyze discovered types...");
-        EndpointDebugger.DebugEndpointTypes(DiscoveredTypes.All);
-        Console.WriteLine("[DEBUG] Analysis complete, now calling AddFastEndpoints...");
-        
         return services.AddFastEndpoints(o => o.SourceGeneratorDiscoveredTypes = DiscoveredTypes.All);
     }
 

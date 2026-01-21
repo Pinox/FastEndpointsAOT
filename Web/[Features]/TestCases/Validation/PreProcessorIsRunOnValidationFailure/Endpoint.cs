@@ -4,6 +4,7 @@ public class Endpoint : Endpoint<Request, Response>
 {
     public override void Configure()
     {
+        Verbs(Http.POST);
         Routes(AppRoutes.testcases_pre_processor_is_run_on_validation_failure);
         PreProcessors(new MyPreProcessor());
         Description(b => b.WithTags("Hide"));

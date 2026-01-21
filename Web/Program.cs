@@ -5,16 +5,12 @@ using Web.Infrastructure;
 
 try
 {
-    Console.WriteLine("[DEBUG] Starting application...");
-    
     // Ensure AOT trimmer preserves endpoint method metadata
     AotEndpointPreserver.EnsureEndpointsPreserved();
 
     var bld = WebApplication.CreateBuilder(args);
-    Console.WriteLine("[DEBUG] WebApplication.CreateBuilder completed");
 
     // services (keep order)
-    Console.WriteLine("[DEBUG] Adding services...");
     bld.Services
        .AddCoreAppServices()
        .AddFastEndpointsServices()
@@ -22,14 +18,10 @@ try
        .AddInfrastructureServices()
        .AddDocsServices(bld.Configuration) // Native .NET OpenAPI (AOT-compatible)
        .AddRuntimeAotAndEnv();
-    Console.WriteLine("[DEBUG] Services added successfully");
 
     // app pipeline (keep order)
-    Console.WriteLine("[DEBUG] Building app...");
     var app = bld.Build();
-    Console.WriteLine("[DEBUG] App built successfully");
 
-    Console.WriteLine("[DEBUG] Configuring pipeline...");
     app
        // .UseAotResponseBuffering() // Must be early to catch VoidTaskResult exceptions from FastEndpoints
        .UseLocalizationConfigured()
@@ -46,9 +38,7 @@ try
        .UseFastEndpointsPipeline()
        // .MapAdditionalEndpoints() // Disabled: Minimal API endpoints not compatible with AOT without additional JSON context config
        .UseDocsUIIfNonProduction();
-    Console.WriteLine("[DEBUG] Pipeline configured successfully");
 
-    Console.WriteLine("[DEBUG] Starting app.Run()...");
     app.Run();
 }
 catch (Exception ex)

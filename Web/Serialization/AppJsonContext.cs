@@ -15,30 +15,82 @@ using BindingMultipart = Binding.Multipart;
 
 namespace Web.Serialization;
 
-[JsonSourceGenerationOptions(GenerationMode = JsonSourceGenerationMode.Metadata, PropertyNameCaseInsensitive = true)]
+[JsonSourceGenerationOptions(
+    WriteIndented = true,
+    PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
+    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+    GenerationMode = JsonSourceGenerationMode.Metadata,
+    PropertyNameCaseInsensitive = true)]
 // Task types - required for AOT when endpoints return Task (void) or Task<T>
 [JsonSerializable(typeof(Task))]
 [JsonSerializable(typeof(Task<object>))]
 [JsonSerializable(typeof(ValueTask))]
 [JsonSerializable(typeof(ValueTask<object>))]
-// Primitive/common types needed for minimal APIs and general serialization
-[JsonSerializable(typeof(string))]
-[JsonSerializable(typeof(int))]
-[JsonSerializable(typeof(long))]
+// Primitive types and their nullable versions
 [JsonSerializable(typeof(bool))]
+[JsonSerializable(typeof(bool?))]
+[JsonSerializable(typeof(byte))]
+[JsonSerializable(typeof(byte?))]
+[JsonSerializable(typeof(sbyte))]
+[JsonSerializable(typeof(sbyte?))]
+[JsonSerializable(typeof(short))]
+[JsonSerializable(typeof(short?))]
+[JsonSerializable(typeof(ushort))]
+[JsonSerializable(typeof(ushort?))]
+[JsonSerializable(typeof(int))]
+[JsonSerializable(typeof(int?))]
+[JsonSerializable(typeof(uint))]
+[JsonSerializable(typeof(uint?))]
+[JsonSerializable(typeof(long))]
+[JsonSerializable(typeof(long?))]
+[JsonSerializable(typeof(ulong))]
+[JsonSerializable(typeof(ulong?))]
+[JsonSerializable(typeof(float))]
+[JsonSerializable(typeof(float?))]
 [JsonSerializable(typeof(double))]
+[JsonSerializable(typeof(double?))]
 [JsonSerializable(typeof(decimal))]
-[JsonSerializable(typeof(DateTime))]
-[JsonSerializable(typeof(DateTimeOffset))]
-[JsonSerializable(typeof(Guid))]
+[JsonSerializable(typeof(decimal?))]
+[JsonSerializable(typeof(char))]
+[JsonSerializable(typeof(char?))]
+[JsonSerializable(typeof(string))]
 [JsonSerializable(typeof(byte[]))]
 [JsonSerializable(typeof(object))]
+// Date/Time types
+[JsonSerializable(typeof(DateTime))]
+[JsonSerializable(typeof(DateTime?))]
+[JsonSerializable(typeof(DateTimeOffset))]
+[JsonSerializable(typeof(DateTimeOffset?))]
+[JsonSerializable(typeof(TimeSpan))]
+[JsonSerializable(typeof(TimeSpan?))]
+[JsonSerializable(typeof(DateOnly))]
+[JsonSerializable(typeof(DateOnly?))]
+[JsonSerializable(typeof(TimeOnly))]
+[JsonSerializable(typeof(TimeOnly?))]
+// Other common types
+[JsonSerializable(typeof(Guid))]
+[JsonSerializable(typeof(Guid?))]
+[JsonSerializable(typeof(Version))]
+// Collection types
 [JsonSerializable(typeof(IEnumerable<string>))]
 [JsonSerializable(typeof(IEnumerable<object>))]
+[JsonSerializable(typeof(IEnumerable<Guid>))]
 [JsonSerializable(typeof(string[]))]
 [JsonSerializable(typeof(object[]))]
-[JsonSerializable(typeof(Dictionary<string, object>))]
+[JsonSerializable(typeof(Guid[]))]
+[JsonSerializable(typeof(List<bool>))]
+[JsonSerializable(typeof(List<int>))]
+[JsonSerializable(typeof(List<string>))]
+[JsonSerializable(typeof(List<Guid>))]
+[JsonSerializable(typeof(List<DateTime>))]
+// Dictionary types
 [JsonSerializable(typeof(Dictionary<string, string>))]
+[JsonSerializable(typeof(Dictionary<string, int>))]
+[JsonSerializable(typeof(Dictionary<string, bool>))]
+[JsonSerializable(typeof(Dictionary<string, object>))]
+// FastEndpoints library types needed for OpenAPI schema generation
+[JsonSerializable(typeof(FastEndpoints.Security.TokenRequest))]
+[JsonSerializable(typeof(FastEndpoints.Security.TokenResponse))]
 // Admin login DTOs - Request is Web-local (derived from Shared base), Response is Shared
 [JsonSerializable(typeof(AdminLogin.Request), TypeInfoPropertyName = "AdminLoginRequest")]
 [JsonSerializable(typeof(SharedAdmin.LoginRequestBase), TypeInfoPropertyName = "AdminLoginRequestBase")]
@@ -85,7 +137,14 @@ namespace Web.Serialization;
 // Binding Multipart - Web-local types
 [JsonSerializable(typeof(BindingMultipart.UploadRequest), TypeInfoPropertyName = "BindingMultipartUploadRequest")]
 [JsonSerializable(typeof(SharedUploads.MultipartUploadRequestBase), TypeInfoPropertyName = "MultipartUploadRequestBase")]
+// TestCases DTOs - for AOT compatibility
+[JsonSerializable(typeof(TestCases.CustomRequestBinder.Product), TypeInfoPropertyName = "CustomRequestBinderProduct")]
+[JsonSerializable(typeof(TestCases.CustomRequestBinder.Request), TypeInfoPropertyName = "CustomRequestBinderRequest")]
+[JsonSerializable(typeof(TestCases.CustomRequestBinder.Response), TypeInfoPropertyName = "CustomRequestBinderResponse")]
+[JsonSerializable(typeof(TestCases.AntiforgeryTest.TokenResponse), TypeInfoPropertyName = "AntiforgeryTestTokenResponse")]
+[JsonSerializable(typeof(TestCases.AntiforgeryTest.VerificationRequest), TypeInfoPropertyName = "AntiforgeryTestVerificationRequest")]
 // FastEndpoints built-in types
 [JsonSerializable(typeof(EmptyRequest), TypeInfoPropertyName = "FastEndpointsEmptyRequest")]
 [JsonSerializable(typeof(EmptyResponse), TypeInfoPropertyName = "FastEndpointsEmptyResponse")]
+[JsonSerializable(typeof(FastEndpoints.InternalErrorResponse), TypeInfoPropertyName = "FastEndpointsInternalErrorResponse")]
 public sealed partial class AppJsonContext : JsonSerializerContext { }

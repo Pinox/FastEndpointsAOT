@@ -75,6 +75,18 @@ namespace Web.Serialization
             {
                 return Create_ErrorResponse(options);
             }
+            if (type == typeof(global::FastEndpoints.InternalErrorResponse))
+            {
+                return Create_FastEndpointsInternalErrorResponse(options);
+            }
+            if (type == typeof(global::FastEndpoints.Security.TokenRequest))
+            {
+                return Create_TokenRequest(options);
+            }
+            if (type == typeof(global::FastEndpoints.Security.TokenResponse))
+            {
+                return Create_TokenResponse(options);
+            }
             if (type == typeof(global::Inventory.Manage.Delete.Request))
             {
                 return Create_InventoryManageDeleteRequest(options);
@@ -231,6 +243,10 @@ namespace Web.Serialization
             {
                 return Create_IEnumerableKeyValuePairStringInt32(options);
             }
+            if (type == typeof(global::System.Collections.Generic.IEnumerable<global::System.Guid>))
+            {
+                return Create_IEnumerableGuid(options);
+            }
             if (type == typeof(global::System.Collections.Generic.IEnumerable<object>))
             {
                 return Create_IEnumerableObject(options);
@@ -242,6 +258,10 @@ namespace Web.Serialization
             if (type == typeof(global::System.Collections.Generic.KeyValuePair<string, int>))
             {
                 return Create_KeyValuePairStringInt32(options);
+            }
+            if (type == typeof(global::System.Collections.Generic.List<global::System.Guid>))
+            {
+                return Create_ListGuid(options);
             }
             if (type == typeof(global::System.Collections.Generic.List<string>))
             {
@@ -275,6 +295,10 @@ namespace Web.Serialization
             {
                 return Create_Guid(options);
             }
+            if (type == typeof(global::System.Guid[]))
+            {
+                return Create_GuidArray(options);
+            }
             if (type == typeof(global::System.Reflection.MethodBase))
             {
                 return Create_MethodBase(options);
@@ -302,6 +326,26 @@ namespace Web.Serialization
             if (type == typeof(global::System.Threading.Tasks.ValueTask<object>))
             {
                 return Create_ValueTaskObject(options);
+            }
+            if (type == typeof(global::TestCases.AntiforgeryTest.TokenResponse))
+            {
+                return Create_AntiforgeryTestTokenResponse(options);
+            }
+            if (type == typeof(global::TestCases.AntiforgeryTest.VerificationRequest))
+            {
+                return Create_AntiforgeryTestVerificationRequest(options);
+            }
+            if (type == typeof(global::TestCases.CustomRequestBinder.Product))
+            {
+                return Create_CustomRequestBinderProduct(options);
+            }
+            if (type == typeof(global::TestCases.CustomRequestBinder.Request))
+            {
+                return Create_CustomRequestBinderRequest(options);
+            }
+            if (type == typeof(global::TestCases.CustomRequestBinder.Response))
+            {
+                return Create_CustomRequestBinderResponse(options);
             }
             if (type == typeof(global::Uploads.Image.Save.Request))
             {
