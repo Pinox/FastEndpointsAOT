@@ -21,6 +21,9 @@ app.UseFastEndpoints(
     {
         c.Binding.ReflectionCache.AddFromFastEndpointsNativeAOT();
         c.Serializer.Options.TypeInfoResolverChain.Add(BenchSerializerContext.Default);
+        
+        // Enable source-generated command executors for AOT compatibility
+        c.Endpoints.UseGeneratedCommandExecutors = true;
     });
 app.Run();
 

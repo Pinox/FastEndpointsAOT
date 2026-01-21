@@ -75,15 +75,14 @@ public static class MainExtensions
         // Register source-generated command executors if enabled
         if (Cfg.EpOpts.UseGeneratedCommandExecutors)
         {
-            if (!CommandExecutorRegistry.HasRegistrations)
+            // Register pre-generated executors if any were discovered by the source generator
+            if (CommandExecutorRegistry.HasRegistrations)
             {
-                throw new InvalidOperationException(
-                    "UseGeneratedCommandExecutors is enabled but no command executors were registered by the source generator. " +
-                    "Ensure the FastEndpoints source generator package is referenced and your command handlers are discoverable.");
+                var cmdRegistry = app.ServiceProvider.GetRequiredService<CommandHandlerRegistry>();
+                CommandExecutorRegistry.RegisterAll(cmdRegistry, app.ServiceProvider);
             }
 
-            var cmdRegistry = app.ServiceProvider.GetRequiredService<CommandHandlerRegistry>();
-            CommandExecutorRegistry.RegisterAll(cmdRegistry, app.ServiceProvider);
+            // Enable strict mode - will throw if MakeGenericType would be used at runtime
             CommandExtensions.UsePreGeneratedExecutors = true;
         }
 

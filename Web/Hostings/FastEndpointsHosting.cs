@@ -49,14 +49,10 @@ public static class FastEndpointsHosting
 
             c.Throttle.HeaderName = "X-Custom-Throttle-Header";
             c.Throttle.Message = "Custom Error Response";
-        });
 
-        // Register pre-generated command handler executors for AOT compatibility
-        var sp = (app as WebApplication)!.Services;
-        sp.RegisterCommandExecutors(GeneratedReflection.RegisterCommandExecutors);
-        
-        // Enable AOT mode to require pre-generated executors (will throw if missing)
-        CommandExtensions.EnableAotMode();
+            // Enable source-generated command executors for AOT compatibility
+            c.Endpoints.UseGeneratedCommandExecutors = true;
+        });
 
         return app;
     }
