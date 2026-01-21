@@ -23,21 +23,53 @@ namespace Web.Serialization
             {
                 return Create_Boolean(options);
             }
+            if (type == typeof(bool?))
+            {
+                return Create_NullableBoolean(options);
+            }
             if (type == typeof(byte))
             {
                 return Create_Byte(options);
+            }
+            if (type == typeof(byte?))
+            {
+                return Create_NullableByte(options);
             }
             if (type == typeof(byte[]))
             {
                 return Create_ByteArray(options);
             }
+            if (type == typeof(char))
+            {
+                return Create_Char(options);
+            }
+            if (type == typeof(char?))
+            {
+                return Create_NullableChar(options);
+            }
             if (type == typeof(decimal))
             {
                 return Create_Decimal(options);
             }
+            if (type == typeof(decimal?))
+            {
+                return Create_NullableDecimal(options);
+            }
             if (type == typeof(double))
             {
                 return Create_Double(options);
+            }
+            if (type == typeof(double?))
+            {
+                return Create_NullableDouble(options);
+            }
+            if (type == typeof(float))
+            {
+                return Create_Single(options);
+            }
+            if (type == typeof(float?))
+            {
+                return Create_NullableSingle(options);
             }
             if (type == typeof(global::Admin.Login.Request))
             {
@@ -223,9 +255,17 @@ namespace Web.Serialization
             {
                 return Create_AggregateException(options);
             }
+            if (type == typeof(global::System.Collections.Generic.Dictionary<string, bool>))
+            {
+                return Create_DictionaryStringBoolean(options);
+            }
             if (type == typeof(global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.List<string>>))
             {
                 return Create_DictionaryStringListString(options);
+            }
+            if (type == typeof(global::System.Collections.Generic.Dictionary<string, int>))
+            {
+                return Create_DictionaryStringInt32(options);
             }
             if (type == typeof(global::System.Collections.Generic.Dictionary<string, object>))
             {
@@ -259,9 +299,21 @@ namespace Web.Serialization
             {
                 return Create_KeyValuePairStringInt32(options);
             }
+            if (type == typeof(global::System.Collections.Generic.List<bool>))
+            {
+                return Create_ListBoolean(options);
+            }
+            if (type == typeof(global::System.Collections.Generic.List<global::System.DateTime>))
+            {
+                return Create_ListDateTime(options);
+            }
             if (type == typeof(global::System.Collections.Generic.List<global::System.Guid>))
             {
                 return Create_ListGuid(options);
+            }
+            if (type == typeof(global::System.Collections.Generic.List<int>))
+            {
+                return Create_ListInt32(options);
             }
             if (type == typeof(global::System.Collections.Generic.List<string>))
             {
@@ -279,13 +331,25 @@ namespace Web.Serialization
             {
                 return Create_DateOnly(options);
             }
+            if (type == typeof(global::System.DateOnly?))
+            {
+                return Create_NullableDateOnly(options);
+            }
             if (type == typeof(global::System.DateTime))
             {
                 return Create_DateTime(options);
             }
+            if (type == typeof(global::System.DateTime?))
+            {
+                return Create_NullableDateTime(options);
+            }
             if (type == typeof(global::System.DateTimeOffset))
             {
                 return Create_DateTimeOffset(options);
+            }
+            if (type == typeof(global::System.DateTimeOffset?))
+            {
+                return Create_NullableDateTimeOffset(options);
             }
             if (type == typeof(global::System.Exception))
             {
@@ -294,6 +358,10 @@ namespace Web.Serialization
             if (type == typeof(global::System.Guid))
             {
                 return Create_Guid(options);
+            }
+            if (type == typeof(global::System.Guid?))
+            {
+                return Create_NullableGuid(options);
             }
             if (type == typeof(global::System.Guid[]))
             {
@@ -327,6 +395,26 @@ namespace Web.Serialization
             {
                 return Create_ValueTaskObject(options);
             }
+            if (type == typeof(global::System.TimeOnly))
+            {
+                return Create_TimeOnly(options);
+            }
+            if (type == typeof(global::System.TimeOnly?))
+            {
+                return Create_NullableTimeOnly(options);
+            }
+            if (type == typeof(global::System.TimeSpan))
+            {
+                return Create_TimeSpan(options);
+            }
+            if (type == typeof(global::System.TimeSpan?))
+            {
+                return Create_NullableTimeSpan(options);
+            }
+            if (type == typeof(global::System.Version))
+            {
+                return Create_Version(options);
+            }
             if (type == typeof(global::TestCases.AntiforgeryTest.TokenResponse))
             {
                 return Create_AntiforgeryTestTokenResponse(options);
@@ -359,9 +447,17 @@ namespace Web.Serialization
             {
                 return Create_Int32(options);
             }
+            if (type == typeof(int?))
+            {
+                return Create_NullableInt32(options);
+            }
             if (type == typeof(long))
             {
                 return Create_Int64(options);
+            }
+            if (type == typeof(long?))
+            {
+                return Create_NullableInt64(options);
             }
             if (type == typeof(object))
             {
@@ -371,6 +467,22 @@ namespace Web.Serialization
             {
                 return Create_ObjectArray(options);
             }
+            if (type == typeof(sbyte))
+            {
+                return Create_SByte(options);
+            }
+            if (type == typeof(sbyte?))
+            {
+                return Create_NullableSByte(options);
+            }
+            if (type == typeof(short))
+            {
+                return Create_Int16(options);
+            }
+            if (type == typeof(short?))
+            {
+                return Create_NullableInt16(options);
+            }
             if (type == typeof(string))
             {
                 return Create_String(options);
@@ -378,6 +490,30 @@ namespace Web.Serialization
             if (type == typeof(string[]))
             {
                 return Create_StringArray(options);
+            }
+            if (type == typeof(uint))
+            {
+                return Create_UInt32(options);
+            }
+            if (type == typeof(uint?))
+            {
+                return Create_NullableUInt32(options);
+            }
+            if (type == typeof(ulong))
+            {
+                return Create_UInt64(options);
+            }
+            if (type == typeof(ulong?))
+            {
+                return Create_NullableUInt64(options);
+            }
+            if (type == typeof(ushort))
+            {
+                return Create_UInt16(options);
+            }
+            if (type == typeof(ushort?))
+            {
+                return Create_NullableUInt16(options);
             }
             return null;
         }

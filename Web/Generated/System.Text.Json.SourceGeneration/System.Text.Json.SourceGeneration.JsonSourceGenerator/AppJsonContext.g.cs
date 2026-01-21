@@ -13,7 +13,10 @@ namespace Web.Serialization
     {
         private readonly static global::System.Text.Json.JsonSerializerOptions s_defaultOptions = new()
         {
+            DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
             PropertyNameCaseInsensitive = true,
+            PropertyNamingPolicy = global::System.Text.Json.JsonNamingPolicy.CamelCase,
+            WriteIndented = true,
         };
         
         private const global::System.Reflection.BindingFlags InstanceMemberBindingFlags =

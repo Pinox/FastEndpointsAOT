@@ -17,7 +17,9 @@ public class DiscoveredTypesGenerator : IIncrementalGenerator
         "FastEndpoints.IEventHandler",
         "FastEndpoints.ICommandHandler",
         "FastEndpoints.ISummary",
-        "FluentValidation.IValidator"
+        "FluentValidation.IValidator",
+        "FastEndpoints.IPreProcessor",
+        "FastEndpoints.IPostProcessor"
     ];
 
     // ReSharper disable once InconsistentNaming
