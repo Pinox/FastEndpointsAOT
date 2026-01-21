@@ -205,12 +205,13 @@ public sealed class EventPublishersGenerator : IIncrementalGenerator
         var directEventTypes = data.DirectEventTypes;
 
         // Combine event types from handlers and direct implementations, remove duplicates
+        // Use StringComparer.Ordinal for deterministic, culture-invariant comparison
         var allEventTypes = handlerEventTypes
             .Concat(directEventTypes)
-            .Where(t => t is not null)
+            .Where(static t => t is not null)
             .Cast<string>()
-            .Distinct()
-            .OrderBy(t => t)
+            .Distinct(StringComparer.Ordinal)
+            .OrderBy(static t => t, StringComparer.Ordinal)
             .ToImmutableArray();
 
         // Only generate if we have event types
