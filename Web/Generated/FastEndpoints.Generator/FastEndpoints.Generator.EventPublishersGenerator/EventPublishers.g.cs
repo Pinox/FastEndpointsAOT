@@ -90,34 +90,29 @@ public static class EventPublishers
         return false;
     }
 
-    /// <summary>
-    /// Publishes an event of type <see cref="TestCases.EventBusTest.TestEventBus"/>.
-    /// </summary>
-    private static Task Publish_TestCases_EventBusTest_TestEventBus(IEvent eventModel, Mode waitMode, CancellationToken cancellation)
-        => global::FastEndpoints.EventPublisherRegistry.PublishEvent((global::TestCases.EventBusTest.TestEventBus)eventModel, waitMode, cancellation);
-
-    /// <summary>
-    /// Publishes an event of type <see cref="TestCases.EventHandlingTest.NewItemAddedToStock"/>.
-    /// </summary>
-    private static Task Publish_TestCases_EventHandlingTest_NewItemAddedToStock(IEvent eventModel, Mode waitMode, CancellationToken cancellation)
-        => global::FastEndpoints.EventPublisherRegistry.PublishEvent((global::TestCases.EventHandlingTest.NewItemAddedToStock)eventModel, waitMode, cancellation);
-
-    /// <summary>
-    /// Publishes an event of type <see cref="TestCases.EventHandlingTest.SomeEvent"/>.
-    /// </summary>
-    private static Task Publish_TestCases_EventHandlingTest_SomeEvent(IEvent eventModel, Mode waitMode, CancellationToken cancellation)
-        => global::FastEndpoints.EventPublisherRegistry.PublishEvent((global::TestCases.EventHandlingTest.SomeEvent)eventModel, waitMode, cancellation);
-
-    /// <summary>
-    /// Publishes an event of type <see cref="TestCases.EventQueueTest.MyEvent"/>.
-    /// </summary>
-    private static Task Publish_TestCases_EventQueueTest_MyEvent(IEvent eventModel, Mode waitMode, CancellationToken cancellation)
-        => global::FastEndpoints.EventPublisherRegistry.PublishEvent((global::TestCases.EventQueueTest.MyEvent)eventModel, waitMode, cancellation);
-
-    /// <summary>
-    /// Publishes an event of type <see cref="TestCases.EventQueueTest.TestEventQueue"/>.
-    /// </summary>
-    private static Task Publish_TestCases_EventQueueTest_TestEventQueue(IEvent eventModel, Mode waitMode, CancellationToken cancellation)
-        => global::FastEndpoints.EventPublisherRegistry.PublishEvent((global::TestCases.EventQueueTest.TestEventQueue)eventModel, waitMode, cancellation);
-
+      /// <summary>
+      /// Publishes an event of type <see cref="TestCases.EventBusTest.TestEventBus"/>.
+      /// </summary>
+      private static Task Publish_TestCases_EventBusTest_TestEventBus(IEvent eventModel, Mode waitMode, CancellationToken cancellation)
+          => global::FastEndpoints.EventPublisherRegistry.PublishEvent((global::TestCases.EventBusTest.TestEventBus)eventModel, waitMode, cancellation);
+      /// <summary>
+      /// Publishes an event of type <see cref="TestCases.EventHandlingTest.NewItemAddedToStock"/>.
+      /// </summary>
+      private static Task Publish_TestCases_EventHandlingTest_NewItemAddedToStock(IEvent eventModel, Mode waitMode, CancellationToken cancellation)
+          => global::FastEndpoints.EventPublisherRegistry.PublishEvent((global::TestCases.EventHandlingTest.NewItemAddedToStock)eventModel, waitMode, cancellation);
+      /// <summary>
+      /// Publishes an event of type <see cref="TestCases.EventHandlingTest.SomeEvent"/>.
+      /// </summary>
+      private static Task Publish_TestCases_EventHandlingTest_SomeEvent(IEvent eventModel, Mode waitMode, CancellationToken cancellation)
+          => global::FastEndpoints.EventPublisherRegistry.PublishEvent((global::TestCases.EventHandlingTest.SomeEvent)eventModel, waitMode, cancellation);
+      /// <summary>
+      /// Publishes an event of type <see cref="TestCases.EventQueueTest.MyEvent"/>.
+      /// </summary>
+      private static Task Publish_TestCases_EventQueueTest_MyEvent(IEvent eventModel, Mode waitMode, CancellationToken cancellation)
+          => global::FastEndpoints.EventPublisherRegistry.PublishEvent((global::TestCases.EventQueueTest.MyEvent)eventModel, waitMode, cancellation);
+      /// <summary>
+      /// Publishes an event of type <see cref="TestCases.EventQueueTest.TestEventQueue"/>.
+      /// </summary>
+      private static Task Publish_TestCases_EventQueueTest_TestEventQueue(IEvent eventModel, Mode waitMode, CancellationToken cancellation)
+          => global::FastEndpoints.EventPublisherRegistry.PublishEvent((global::TestCases.EventQueueTest.TestEventQueue)eventModel, waitMode, cancellation);
 }
