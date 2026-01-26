@@ -35,7 +35,7 @@ namespace Microsoft.Extensions.Configuration.Binder.SourceGeneration
     {
         #region IConfiguration extensions.
         /// <summary>Attempts to bind the configuration instance to a new instance of type T.</summary>
-        [InterceptsLocation(1, "1MRlQaDpa8hvemmktb3dZiICAABBdXRoSG9zdGluZy5jcw==")] // X:\Squeaky.Devices\samples\FastEndpoints\latest\Web\Hostings\AuthHosting.cs(15,54)
+        [InterceptsLocation(1, "1MRlQaDpa8hvemmktb3dZiICAABBdXRoSG9zdGluZy5jcw==")] // x:\Squeaky.Devices\samples\FastEndpoints\latest\Web\Hostings\AuthHosting.cs(15,54)
         public static T? Get<T>(this IConfiguration configuration) => (T?)(GetCore(configuration, typeof(T), configureOptions: null) ?? default(T));
         #endregion IConfiguration extensions.
 
